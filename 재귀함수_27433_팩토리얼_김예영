@@ -17,4 +17,6 @@ public class Main {
         int n = sc.nextInt();
 
         System.out.println(dfs(n));
+
+        sc.close();
     }
