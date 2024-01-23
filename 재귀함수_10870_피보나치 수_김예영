@@ -1,5 +1,5 @@
 import java.util.*;
-public class week1_10870_fibonacci {
+public class Main {
     public static int dfs(int x) {
         if(x == 1 || x == 2) return 1;
         if(x == 0) return 0;
