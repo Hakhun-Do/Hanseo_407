@@ -1,0 +1,21 @@
+import java.util.*;
+
+public class Main {
+    public static void hanoi(int N, int start, int mid, int to) {
+        if (N == 1) {
+            System.out.println(start + " " + to);
+            return;
+        }
+        hanoi(N - 1, start, to, mid);
+        System.out.println(start + " " + to);
+        hanoi(N - 1, mid, start, to);
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+        int n = in.nextInt();
+        System.out.println((int)Math.pow(2,n)-1);
+        hanoi(n, 1, 2, 3);
+    }
+}
