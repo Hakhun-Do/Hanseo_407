@@ -3,9 +3,9 @@ using namespace std;
 void hanoi(int n,int start, int to, int sub) {
     if (n == 1) cout << start << " " << to << "\n";
     else {
-        hanoi(n - 1, start, sub, to);
+        hanoi(n - 1, start, sub, to);//n-1은 sub로 이동해야지 n이 to로 이동할 수있음
         cout << start << " " << to << "\n";
-        hanoi(n - 1, sub, to, start);
+        hanoi(n - 1, sub, to, start);//이동을 했을때 sub를 시작점으로 n-1이 밑에 올 수 있도록 이동하기 위함.
     }
 }
 int main() {
