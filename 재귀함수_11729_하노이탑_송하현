@@ -1,0 +1,28 @@
+#include <iostream>
+#include <math.h>
+#include <vector>
+using namespace std;
+int cnt = 0;
+void hano(int N, vector<pair<int,int>> &move, int st, int sub, int gol){
+    int temp;
+    if(N==1){//끝내고 값을 넣기
+        move.push_back({st,gol});
+    }
+    else {
+        hano(N-1,move, st, gol, sub);
+        move.push_back({st, gol});
+        hano(N-1,move, sub, st, gol);
+    }
+}
+int main(){
+    int N, st=1, sub, gol;
+    vector<pair<int, int>> move;
+    cin >> N;
+    hano(N, move, st, 2, 3);
+    int total = pow(2,N)-1;
+    cout << total << "\n";
+    for(int i=0;i<total;i++)
+    {
+        cout << move[i].first << " " << move[i].second << "\n";
+    }
+}
