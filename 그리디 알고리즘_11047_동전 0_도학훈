@@ -1,0 +1,19 @@
+//그리디 알고리즘_11047_동전 0_도학훈
+#include<iostream>
+using namespace std;
+int main() {
+	int N; //동전의 종류(1<=N<=10)
+	int A[10]; //각 동전의 가치 
+	int K; //가치의 합
+	cin >> N >> K;
+	for (int i = 0; i < N; i++) {
+		cin >> A[i];
+	}
+	int sum = 0;
+	for (int i = N - 1; i >= 0; i--) {
+		if (K == 0) break;
+		sum += (K / A[i]);
+		K = K % A[i];
+	}
+	cout << sum<<"\n";
+}
