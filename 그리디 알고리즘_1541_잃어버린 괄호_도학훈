@@ -1,0 +1,28 @@
+//그리디 알고리즘_1541_잃어버린 괄호_도학훈
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+	string math;
+	cin >> math;
+	string number = "";
+	int sum = 0;
+	int check = 0;
+	for (int i = 0; i <= math.size(); i++) {
+		if (math[i] == '+' || math[i] == '-' || i == math.size()) {
+			if (check == 1) {
+				sum -= stoi(number);
+				number = "";
+			}
+			else {
+				sum += stoi(number);
+				number = "";
+			}
+
+		}
+		else
+			number += math[i];
+		if (math[i] == '-') check = 1;
+	}
+	cout << sum;
+}
