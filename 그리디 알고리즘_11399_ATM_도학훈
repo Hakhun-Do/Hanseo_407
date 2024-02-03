@@ -1,0 +1,22 @@
+//그리디 알고리즘_11399_ATM_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+	int N; //사람의 수(1<= N <=1000)
+	cin >> N;
+	int check;
+	vector<int> time;//사람마다 ATM 이용시간
+	for (int i = 0; i < N; i++) {
+		cin >> check;
+		time.push_back(check);
+	}
+	sort(time.begin(), time.end());
+	int sum=time[0];
+	for (int i = 1; i < N; i++) {
+		time[i] += time[i - 1];
+		sum += time[i];
+	}
+	cout << sum;
+}
