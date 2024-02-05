@@ -3,14 +3,14 @@
 #include<string>
 using namespace std;
 int main() {
-	string math;
+	string math;//수식
 	cin >> math;
-	string number = "";
-	int sum = 0;
-	int check = 0;
+	string number = "";//수식에서 숫자 저장공간
+	int sum = 0; //최솟값 저장공간
+	int check = 0;//앞에서 -있었는지 유무확인
 	for (int i = 0; i <= math.size(); i++) {
 		if (math[i] == '+' || math[i] == '-' || i == math.size()) {
-			if (check == 1) {
+			if (check == 1) { //math.size()안넣으면 마지막 숫자들 확인못함.
 				sum -= stoi(number);
 				number = "";
 			}
