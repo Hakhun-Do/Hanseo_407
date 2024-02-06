@@ -1,0 +1,22 @@
+#include <iostream>
+#include <vector>
+#include<algorithm>
+using namespace std;
+int main() {
+	int a, b, c, cnt = 1, d;
+	cin >> a;
+	vector<pair<int, int>> tml;
+	for (int i = 0; i < a; i++) {
+		cin >> b >> c;
+		tml.push_back({ c,b }); 
+	}
+	sort(tml.begin(), tml.end());
+	d = tml[0].first;
+	for (int i = 1; i < a; i++) {
+		if (d <= tml[i].second) {
+			d = tml[i].first;
+			cnt++;
+		}
+	}
+	cout << cnt;
+}
