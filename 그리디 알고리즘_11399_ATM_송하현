@@ -1,0 +1,18 @@
+#include <iostream>
+#include <vector>
+#include<algorithm>
+using namespace std;
+int main() {
+	int a, t = 0, tot=0;
+	cin >> a;
+	vector<int> time(a, 0);
+	for (int i = 0; i < a; i++) {
+		cin >> time[i];
+	}
+	sort(time.begin(), time.end());
+	for (int i = 0; i < a; i++) {
+		tot += t + time[i];
+		t += time[i];
+	}
+	cout << tot;
+}
