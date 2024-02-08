@@ -1,0 +1,35 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String data;
+        String[] s;
+        int n;
+        int sum = 0; // 결과값(시간의 총합)
+
+        n = sc.nextInt();
+        sc.nextLine();
+
+        int[] a = new int [n];
+        int time = n; // (time은 해당 시간을 몇 배 곱할 것인지에 대한 값)
+
+        data = sc.nextLine();
+        s = data.split(" ");
+        for(int i=0; i<n; i++)
+            a[i] = Integer.parseInt(s[i]);
+
+        Arrays.sort(a);
+
+        for(int i=0; i<n; i++) {
+            sum += (a[i]*time);
+            time--;
+        }
+
+        System.out.println(sum);
+
+        sc.close();
+    }
+}
