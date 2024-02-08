@@ -2,8 +2,8 @@
 #include<iostream>
 using namespace std;
 int N, M;//1<=M<=N<=8
-int arr[8];//수열 저장
-int use[8];//숫자사용여부확인
+int arr[9];//수열 저장
+int use[9];//숫자사용여부확인
 void fun(int k) {
 	if (k == M) { //k=M일때 수열 출력
 		for (int i = 0; i < M; i++) {
