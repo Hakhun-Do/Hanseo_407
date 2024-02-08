@@ -1,0 +1,22 @@
+//백트래킹_15651_N과 M(3)_도학훈
+#include<iostream>
+using namespace std;
+int N, M;//1<=M<=N<=7
+int arr[8];//수열 저장
+void fun(int k) {
+	if (k == M) { //k=M일때 수열 출력
+		for (int i = 0; i < M; i++) {
+			cout << arr[i] << " ";
+		}
+		cout << "\n";
+		return;
+	}
+	for (int i = 0; i < N; i++) {
+		arr[k] = i + 1;
+		fun(k + 1);
+	}
+}
+int main() {
+	cin >> N >> M;
+	fun(0);
+}
