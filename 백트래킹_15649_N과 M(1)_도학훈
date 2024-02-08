@@ -1,0 +1,27 @@
+//백트래킹_15649_N과 M(1)_도학훈
+#include<iostream>
+using namespace std;
+int N, M;//1<=M<=N<=8
+int arr[8];//수열 저장
+int use[8];//숫자사용여부확인
+void fun(int k) {
+	if (k == M) { //k=M일때 수열 출력
+		for (int i = 0; i < M; i++) {
+			cout << arr[i] << " ";
+		}
+		cout << "\n";
+		return;
+	}
+	for (int i = 0; i < N; i++) {
+		if (use[i + 1] == 0) { //해당 숫자 사용안했으면 0으로 초기화
+			arr[k] = i + 1;
+			use[i + 1] = 1; //숫자사용하여 1로 바꿈
+			fun(k + 1);
+			use[i + 1] = 0; //다시 숫자 초기화
+		}
+	}
+}
+int main() {
+	cin >> N >> M;
+	fun(0);
+}
