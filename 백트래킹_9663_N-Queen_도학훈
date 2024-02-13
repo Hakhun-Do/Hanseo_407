@@ -1,0 +1,35 @@
+//백트래킹_9663_N-Queen_도학훈
+#include<iostream>
+#include<cmath>
+using namespace std;
+int N;//(1<=N<15)
+int chess[16];//채스판의 행을 나타내기 위한 배열
+int cnt; //결과값 나타내기위한 변수
+int M;//참 거짓 나타내기위한 변수
+void Queen(int k) {
+	if (N == k) {
+		cnt++;
+	}
+	else {
+		for (int i = 0; i < N; i++) {
+			chess[k] = i;
+			M = 0; //0일때 참
+			for (int j = 0; j < k; j++) {
+				if (chess[k] == chess[j] || abs(chess[k] - chess[j]) == k - j) {
+					// 첫번째 조건: 같은 열에 존재하는지, 두번째 조건(중요): 대각선에 존재하는지
+					M = 1;//1일때 거짓
+					continue;
+				}
+			}
+			if (M == 0) {//참이면
+				Queen(k + 1);
+			}
+		}
+	}
+}
+int main() {
+	cin >> N;
+	Queen(0);
+	cout << cnt;
+	return 0;
+}
