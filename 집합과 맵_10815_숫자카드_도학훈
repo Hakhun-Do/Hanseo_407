@@ -1,0 +1,27 @@
+ //집합과 맵_10815_숫자카드_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	int N, M, num1 = 0, num2 = 0;
+
+	cin >> N; //첫번째줄 입력
+	vector<int> Ncard(N);
+	for (int i = 0; i < N; i++) cin >> Ncard[i]; //두번째줄 입력
+	sort(Ncard.begin(), Ncard.end());
+	cin >> M; //세번째줄 입력
+	vector<int> Mcard(M);
+
+	for (int i = 0; i < M; i++) {
+		cin >> num1; //네번째줄 입력
+		if (binary_search(Ncard.begin(), Ncard.end(), num1)) {
+			num2 = 1;
+		}
+		Mcard[i] = num2;
+		num2 = 0;
+	}
+	
+	for (int i = 0; i < M; i++) cout << Mcard[i] << " ";
+}
