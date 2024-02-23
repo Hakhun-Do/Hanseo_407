@@ -1,0 +1,21 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	int N, M, cnt = 0;
+	string text;
+	cin >> N >> M;
+	vector<string> Nstring(N);
+
+	for (int i = 0; i < N; i++) cin >> Nstring[i];
+	sort(Nstring.begin(), Nstring.end());
+	for (int i = 0; i < M; i++) {
+		cin >> text;
+		if (binary_search(Nstring.begin(), Nstring.end(), text)) {
+			cnt++;
+		}
+	}
+	cout << cnt;
+}
