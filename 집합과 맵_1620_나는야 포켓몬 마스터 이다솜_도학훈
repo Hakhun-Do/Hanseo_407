@@ -1,0 +1,38 @@
+//집합과 맵_1620_나는야 포켓몬 마스터 이다솜_도학훈
+#include<iostream>
+#include<map> // map때문에 사용.
+#include<cctype>// isdigit()함수로 문자인지 숫자인지 구별하기 위해 사용.
+#include<vector>// vector때문에 사용.
+#include<string>//to_string()함수로 숫자를 문자로 바꾸기 위해 사용
+using namespace std;
+
+int main() {
+	int N, M; // N: 포켓몬 개수, M: 맞춰야 하는 문제의 개수
+	string term1, term2;
+	char term3;
+	cin >> N >> M;
+
+	map<string, string> name1; //숫자가 키 값인 포켓몬 이름
+	map<string, string> name2; //이름이 키 값인 포켓몬 이름
+	vector<string> answer(M);//문제 답변
+	for (int i = 1; i <= N; i++) {
+		cin >> term1;
+		term2 = to_string(i);//숫자를 문자로 바꾸기위해사용
+		name1[term2] = term1;
+		name2[term1] = term2;
+	}
+
+	for (int i = 0; i < M; i++) {
+		cin >> term1;
+		term3 = term1.at(0);
+		if (isdigit(term3)) {
+			answer[i] = name1[term1];
+		}
+		else {
+			answer[i] = name2[term1];
+		}
+	}
+	for (int i = 0; i < M; i++) {
+		cout << answer[i] << "\n";
+	}
+}
