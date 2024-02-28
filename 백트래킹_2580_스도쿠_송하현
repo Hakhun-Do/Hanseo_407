@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <stdlib.h>
+#include <algorithm>
+using namespace std;
+bool chk(vector<vector<int>> sudoku, int x, int y, int num) {//되는 경우의 수 확인 후 경우의 수 반환
+	vector<int> r;//가로
+	vector<int> c;//세로
+	vector<int> n;//9칸
+	for (int i = 0; i < 9; i++) {
+		r.push_back(sudoku[y][i]);
+		c.push_back(sudoku[i][x]);
+		n.push_back(sudoku[((y / 3) * 3) + (i / 3)][((x / 3) * 3) + (i % 3)]);
+	}
+	sort(r.begin(), r.end());
+	sort(c.begin(), c.end());
+	sort(n.begin(), n.end());
+	if (binary_search(r.begin(), r.end(), num) == false && binary_search(c.begin(), c.end(), num) == false && binary_search(n.begin(), n.end(), num) == false)
+		return true;
+	else
+		return false;
+}
+void sdk(vector<vector<int>> sudoku, vector<int>& x, vector<int>& y, int cnt) {//경우의 수 실행 후 막히면 다시 뒤로 돌아와야함
+	if (cnt >= x.size()) {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				cout << sudoku[i][j] << " ";
+			}
+			cout << "\n";
+		}
+		exit(0);
+	}
+	else {
+		for (int i = 1; i <= 9; i++) {
+			if(chk(sudoku, x[cnt], y[cnt], i)) {
+				sudoku[y[cnt]][x[cnt]] = i;
+				sdk(sudoku, x, y,cnt+1);
+			}
+		}
+	}
+}
+int main() {
+	vector<vector<int>> sudoku(9, vector<int>(9, 0));
+	vector<int> x;
+	vector<int> y;
+	for (int i = 0; i < 9; i++) {
+		for (int j = 0; j < 9; j++) {
+			cin >> sudoku[i][j];
+			if (sudoku[i][j] == 0) {
+				y.push_back(i);
+				x.push_back(j);
+			}
+		}
+	}
+	sdk(sudoku, x, y, 0);
+}
