@@ -3,15 +3,11 @@
 #include <stdlib.h>
 using namespace std;
 bool chk(vector<vector<int>> sudoku, int x, int y, int num) {//되는 경우의 수 확인 후 경우의 수 반환
-	bool fnd = false;//같은 숫자 찾기
 	for (int i = 0; i < 9; i++) {
 		if (sudoku[y][i] == num || sudoku[i][x] == num || sudoku[((y / 3) * 3) + (i / 3)][((x / 3) * 3) + (i % 3)] == num)//차례대로 모든 숫자 대조 후 있으면 fnd 를 참으로 변경
-			fnd = true;
+			return false;
 	}
-	if (fnd == false)//같은 수가 없어야 참 반환
-		return true;
-	else
-		return false;
+	return true;
 }
 void sdk(vector<vector<int>> sudoku, vector<int>& x, vector<int>& y, int cnt) {//경우의 수 실행 후 막히면 다시 뒤로 돌아와야함
 	if (cnt >= x.size()) {
@@ -23,7 +19,7 @@ void sdk(vector<vector<int>> sudoku, vector<int>& x, vector<int>& y, int cnt) {/
 		}
 		exit(0);
 	}
-	else {
+	else {//어떻게 해야 여기서 이미 망했음을 감지하고 일찍 끝내는가... 이것이 시간을 줄이는 최고의 방안이다..
 		for (int i = 1; i <= 9; i++) {
 			if(chk(sudoku, x[cnt], y[cnt], i)) {
 				sudoku[y[cnt]][x[cnt]] = i;
