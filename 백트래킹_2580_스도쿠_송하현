@@ -1,21 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <stdlib.h>
-#include <algorithm>
 using namespace std;
 bool chk(vector<vector<int>> sudoku, int x, int y, int num) {//되는 경우의 수 확인 후 경우의 수 반환
-	vector<int> r;//가로
-	vector<int> c;//세로
-	vector<int> n;//9칸
+	bool fnd = false;//같은 숫자 찾기
 	for (int i = 0; i < 9; i++) {
-		r.push_back(sudoku[y][i]);
-		c.push_back(sudoku[i][x]);
-		n.push_back(sudoku[((y / 3) * 3) + (i / 3)][((x / 3) * 3) + (i % 3)]);
+		if (sudoku[y][i] == num || sudoku[i][x] == num || sudoku[((y / 3) * 3) + (i / 3)][((x / 3) * 3) + (i % 3)] == num)//차례대로 모든 숫자 대조 후 있으면 fnd 를 참으로 변경
+			fnd = true;
 	}
-	sort(r.begin(), r.end());
-	sort(c.begin(), c.end());
-	sort(n.begin(), n.end());
-	if (binary_search(r.begin(), r.end(), num) == false && binary_search(c.begin(), c.end(), num) == false && binary_search(n.begin(), n.end(), num) == false)
+	if (fnd == false)//같은 수가 없어야 참 반환
 		return true;
 	else
 		return false;
