@@ -1,0 +1,28 @@
+//집합과 맵_1764_듣보잡_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	int N, M;
+	cin >> N >> M;
+	map<string, int> name1;
+	vector<string> name2;
+	string temp;
+	for (int i = 0; i < N+M; i++) {
+		cin >> temp;
+		name1[temp] ++;
+		if (name1[temp]>1) {
+			name2.push_back(temp);
+		}
+	}
+	sort(name2.begin(), name2.end());
+	cout << name2.size()<<"\n";
+	for (int i = 0; i < name2.size();i++) {
+		cout << name2[i] <<"\n";
+	}
+}
