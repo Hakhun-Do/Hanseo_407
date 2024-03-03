@@ -1,0 +1,32 @@
+//집합과 맵_10816_숫자 카드 2_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+using namespace std;
+int main() {
+	long long N, M, temp1;
+	cin >> N;
+	// c++에서 넣으면 시간 단축됨. 이유는 잘 모르겠음.
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	map<long long, int> num1;
+	for (int i = 0; i < N; i++) {
+		cin >> temp1;
+		if (num1[temp1]) {
+			num1[temp1]++;
+		}
+		else num1[temp1] = 1;
+	}
+	cin >> M;
+	vector<int> num2(M);
+	for (int i = 0; i < M; i++) {
+		cin >> temp1;
+		if (num1[temp1]) {
+			num2[i] = num1[temp1];
+		}
+		else num2[i] = 0;
+	}
+	for (int i = 0; i < M; i++) {
+		cout << num2[i] << " ";
+	}
+}
