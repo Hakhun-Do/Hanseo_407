@@ -1,0 +1,25 @@
+//집합과 맵_1269_대칭 차집합_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+	// 시간 줄어드는 코드
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	
+	int A, B, temp, sum = 0;
+	cin >> A >> B;
+	map<int, int> totalmap;
+
+	for (int i = 0; i < A + B; i++) {
+		cin >> temp;
+		totalmap[temp]++; //같은 키 값이 들어가면 value 증가해서 1만 존재하는 부분이 차집합.
+	}
+	for (auto& pair : totalmap) { //map에 있는 모든 key와 값들을 볼 수 있도록 하는 부분
+		if (pair.second == 1) sum++; // first가 키, second가 value 뜻함
+	}
+	cout << sum;
+}
