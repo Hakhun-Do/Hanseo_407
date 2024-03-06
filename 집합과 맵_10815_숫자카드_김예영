@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String data;
+        String[] s;
+        int n, m;
+
+        // N과 크기가 N인 맵 입력
+        n = sc.nextInt();
+        sc.nextLine();
+        HashMap<String, String> nMap = new HashMap<String, String>();
+        /* Integer 형이 아닌 String 형으로 저장
+           원하는 값을 저장하고 탐색할 때 굳이 Integer로 바꾸는 과정 생략 */
+        data = sc.nextLine();
+        s = data.split(" ");
+        for (int i = 0; i < n; i++)
+            nMap.put(s[i], "");
+
+        // M과 크기가 M인 배열(결과 값 저장) 입력
+        m = sc.nextInt();
+        sc.nextLine();
+        int[] result = new int[m];
+        data = sc.nextLine();
+        s = data.split(" ");
+        /* 입력과 동시에 nMap에서 해당 값이 있는지 탐색
+           해당 값이 있다면 1을 출력, 없다면 0을 출력*/
+        for (int i = 0; i < m; i++) {
+            if (nMap.containsKey(s[i]))
+                System.out.print("1 ");
+            else
+                System.out.print("0 ");
+        }
+
+        sc.close();
+    }
+}
