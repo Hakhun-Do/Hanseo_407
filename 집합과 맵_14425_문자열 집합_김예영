@@ -1,0 +1,36 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String data;
+        String[] s;
+        int n, m;
+        int result = 0;
+
+        data = sc.nextLine();
+        s = data.split(" ");
+        n = Integer.parseInt(s[0]);
+        m = Integer.parseInt(s[1]);
+        
+        // 탐색 기준이 되는 n 크기의 맵 입력
+        HashMap<String, String> nMap = new HashMap<String, String>();
+        for(int i=0; i<n; i++) {
+            data = sc.nextLine();
+            nMap.put(data, "");
+        }
+        
+        // m만큼 반복하면서 문자열을 입력받고, 만약에 nMap에 있는 문자열이라면 result에 1증가 
+        for(int i=0; i<m; i++) {
+            data = sc.nextLine();
+            if(nMap.containsKey(data))
+                result++;
+        }
+
+        System.out.println(result);
+
+        sc.close();
+    }
+}
