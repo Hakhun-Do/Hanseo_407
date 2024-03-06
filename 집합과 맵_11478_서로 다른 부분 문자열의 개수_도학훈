@@ -1,0 +1,28 @@
+//집합과 맵_11478_서로 다른 부분 문자열의 개수_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+	// 시간 줄어드는 코드
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+	
+	string S, temp;
+	cin >> S;
+	map<string, int> sttring;
+	int sum = 0;
+	// string 문자열 모든 경우의 수로 쪼개는 방법
+	for (int i = 0; i < S.size(); i++) {
+		for (int j = 0; j < S.size() - i; j++) {
+			temp = S.substr(j, i + 1);//하나씩 쪼개기 먼저 <가장중요!>
+			sttring[temp] = 1;// value값 1로 고정
+		}
+	}
+	for (auto& pair : sttring) {//map에서 모든 값 보여주기 위해 사용
+		sum++;
+	}
+	cout << sum;
+}
