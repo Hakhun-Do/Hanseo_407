@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String data;
+        String[] s;
+        int n;
+
+        n = sc.nextInt();
+        sc.nextLine();
+
+        /* map이라는 맵 생성 (키와 값 둘다 String)
+           여기서 중요한 점은 HashMap이 아니라 TreeHashMap을 사용한 점
+           문제의 출력 조건중 회사원의 이름이 역순으로 출력되어야 한다는 조건때문에 TreeMap 사용
+           왜냐하면 일반적인 HashMap은 정렬과 관련된 메소드를 쓸 수 없지만
+           TreeMap은 정렬과 관련된 메소드(Collections.reverseOrder())를 사용할 수 있다*/
+        TreeMap<String, String> map = new TreeMap<String, String>(Collections.reverseOrder());
+
+        // n의 크기 만큼 로그를 입력
+        for(int i=0; i<n; i++) {
+            data = sc.nextLine();
+            s = data.split(" ");
+            // 만약에 이미 입력된 이름이 있으면 새로 추가하지 않고 값(출퇴근 유무)만 대체
+            if(map.containsKey(s[0]))
+                map.replace(s[0], s[1]);
+            // 하지만 이미 입력된 이름이 아니라면 바로 입력
+            else
+                map.put(s[0], s[1]);
+        }
+
+        // map의 키(Key)와 값(Value) 모두 맵의 모든 정보를 담을 수 있는 entry에 저장
+        for(Map.Entry<String, String> entry : map.entrySet()) {
+            /* for문에 맞춰 키(Key)와 값(Value) 하나씩 반복되며 entry로 넘어가고
+               이때 키를 원한다면 getKey, 값을 원한다면 getValue 사용 */
+            if(entry.getValue().equals("enter"))
+                System.out.println(entry.getKey());
+            // entry(map)의 값이 "enter" 라면 키(이름)를 출력
+        }
+
+        sc.close();
+    }
+}
