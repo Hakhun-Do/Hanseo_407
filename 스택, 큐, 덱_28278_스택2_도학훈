@@ -1,0 +1,55 @@
+//스택, 큐, 덱_28278_스택2_도학훈
+#include<iostream>
+#include<stack>
+#include<vector>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+
+	stack<int> stack;//stack 사용예제
+	vector<int> vector;//출력값 저장
+
+	int N, temp1, temp2;
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> temp1;
+		switch (temp1) {
+		case 1: cin >> temp2;
+			stack.push(temp2);
+			break;
+		case 2: 
+			if (stack.size() == 0) {
+			vector.push_back(-1);
+			}
+			else {
+				vector.push_back(stack.top());
+				stack.pop();
+			}
+			break;
+		case 3: vector.push_back(stack.size());
+			break;
+		case 4:
+			if (stack.size() == 0) {
+				vector.push_back(1);
+			}
+			else {
+				vector.push_back(0);
+			}
+			break;
+		case 5:
+			if (stack.size() == 0) {
+				vector.push_back(-1);
+			}
+			else {
+				vector.push_back(stack.top());
+			}
+			break;
+		}
+	}
+	for (int i = 0; i < vector.size(); i++) {
+		cout << vector[i] << "\n";
+	}
+}
