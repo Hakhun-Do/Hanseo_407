@@ -1,15 +1,10 @@
 #include <iostream>
 #include <vector>
-#include <stdlib.h>
 using namespace std;
-bool chk(vector<vector<int>> &sudoku, int x, int y, int num) {//되는 경우의 수 확인 후 반환
-	for (int i = 0; i < 9; i++) {
-		if (sudoku[y][i] == num || sudoku[i][x] == num || sudoku[((y / 3) * 3) + (i / 3)][((x / 3) * 3) + (i % 3)] == num)//차례대로 모든 숫자 대조 중 하나라도 겹치면 바로 끝내기
-			return false;
-	}
-	return true;
-}
-void sdk(vector<vector<int>> sudoku, vector<int>& x, vector<int>& y, int cnt) {//경우의 수 실행 후 막히면 다시 뒤로 돌아와야함
+vector<int> x;
+vector<int> y;
+bool chk = true;
+void sdk(vector<vector<int>> sudoku, int cnt) {//경우의 수 실행 후 막히면 다시 뒤로 돌아와야함
 	if (cnt >= x.size()) {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -19,12 +14,20 @@ void sdk(vector<vector<int>> sudoku, vector<int>& x, vector<int>& y, int cnt) {/
 		}
 		exit(0);
 	}
-	else {//어떻게 해야 여기서 이미 망했음을 감지하고 일찍 끝냄
+	else {
 		for (int i = 1; i <= 9; i++) {
-			if (chk(sudoku, x[cnt], y[cnt], i)) {//확인하고 안되면 
-				sudoku[y[cnt]][x[cnt]] = i;
-				sdk(sudoku, x, y, cnt + 1);
+			for (int j = 0; j < 9; j++) {
+				if (sudoku[y[cnt]][j] == i || sudoku[j][x[cnt]] == i || sudoku[((y[cnt] / 3) * 3) + (j / 3)][((x[cnt] / 3) * 3) + (j % 3)] == i) {//차례대로 모든 숫자 대조 중 하나라도 겹치면 바로 끝내기
+					chk = false;
+					break;
+				}
 			}
+			if (chk == true) {//확인하고 되면 
+				sudoku[y[cnt]][x[cnt]] = i;
+				sdk(sudoku, cnt + 1);
+			}
+			else
+				chk = true;
 		}
 	}
 }
@@ -33,8 +36,6 @@ int main() {
 	cin.tie(0);
 	cout.tie(0);
 	vector<vector<int>> sudoku(9, vector<int>(9, 0));
-	vector<int> x;
-	vector<int> y;
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			cin >> sudoku[i][j];
@@ -44,5 +45,5 @@ int main() {
 			}
 		}
 	}
-	sdk(sudoku, x, y, 0);
+	sdk(sudoku, 0);
 }
