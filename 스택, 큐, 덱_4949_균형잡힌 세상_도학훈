@@ -1,0 +1,14 @@
+//스택, 큐, 덱_4949_균형잡힌 세상_도학훈
+#include<iostream>
+#include<stack>
+#include<vector>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+
+	while (1) {
+
+	}
+}
