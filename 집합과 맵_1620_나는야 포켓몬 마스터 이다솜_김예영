@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class week6_1620_Pokemon {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String data;
+        String[] s;
+        int n, m;
+
+        data = sc.nextLine();
+        s = data.split(" ");
+        n = Integer.parseInt(s[0]);
+        m = Integer.parseInt(s[1]);
+
+        String[] na = new String [n];
+        for(int i=0; i<n; i++)
+            na[i] = sc.nextLine();
+
+        String[] ma = new String [m];
+        String[] result = new String [m];
+        for(int i=0; i<m; i++) {
+            ma[i] = sc.nextLine();
+            for(int j=0; j<n; j++) {
+                try {
+                    int x = Integer.parseInt(ma[i]);
+                    result[i] = na[x-1];
+                }
+                catch (NumberFormatException ex) {
+                     if(ma[i].equals(na[j])) {
+                         result[i] = "" + (j + 1);
+                         break;
+                     }
+                }
+            }
+        }
+
+        for(int i=0; i<m; i++)
+            System.out.println(result[i]);
+
+        sc.close();
+    }
+
+}
