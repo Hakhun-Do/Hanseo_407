@@ -22,7 +22,7 @@ int main() {
 		queue1.push(temp1);
 	}
 	string result = "Nice";
-	while (true) {
+	while (temp2>=N) {
 		//정상적으로 while문 탈출할때
 		if (temp2 == N) break;
 
