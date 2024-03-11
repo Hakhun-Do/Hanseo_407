@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class week6_1620_Pokemon {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,34 +14,31 @@ public class Main {
         n = Integer.parseInt(s[0]);
         m = Integer.parseInt(s[1]);
 
-        String[] na = new String [n];
-        for(int i=0; i<n; i++)
-            na[i] = sc.nextLine();
-
-        String[] ma = new String [m];
+        HashMap<Integer, String> name = new HashMap<Integer, String>();
+        HashMap<String, Integer> number = new HashMap<String, Integer>();
         String[] result = new String [m];
+
+        for(int i=1; i<=n; i++) {
+            data = sc.nextLine();
+            name.put(i, data);
+            number.put(data, i);
+        }
+
         for(int i=0; i<m; i++) {
-            ma[i] = sc.nextLine();
-            for(int j=0; j<n; j++) {
-                try {
-                    int x = Integer.parseInt(ma[i]);
-                    result[i] = na[x-1];
-                }
-                catch (NumberFormatException ex) {
-                     if(ma[i].equals(na[j])) {
-                         result[i] = "" + (j + 1);
-                         break;
-                     }
-                }
+            data = sc.nextLine();
+            try {
+                int x = Integer.parseInt(data);
+                result[i] = name.get(x);
+            }
+            catch (NumberFormatException ex) {
+                result[i] = "" + number.get(data);
             }
         }
-        /* 이차원 배열(도감 번호와 포켓몬 이름 2개를 모두 저장)을 이용하면
-           정렬(sort)과 이진탐색(Binary Search)을 사용할 수 있다
-           이 방식을 사용하면 탐색하는 시간을 줄일 수 있다*/
 
         for(int i=0; i<m; i++)
             System.out.println(result[i]);
 
         sc.close();
     }
+
 }
