@@ -1,9 +1,9 @@
+// 1. 코드에 이상이 없지만 백준 상 원하는 로직이 아님.
+// 2. 백준이 원하는 코드
 //스택, 큐, 덱_12789_도키도키 간식드리미_도학훈
 #include<iostream>
 #include<stack>
 #include<queue>
-#include<vector>
-#include<string>
 using namespace std;
 
 int main() {
@@ -23,7 +23,7 @@ int main() {
 		queue1.push(temp1);
 	}
 	string result = "Nice";
-	while (temp2<N) {
+	while (temp2 < N) {
 		//queue 앞에 숫자가 있을시
 		if (!queue1.empty()) {
 			if (queue1.front() == temp2) {
@@ -31,7 +31,7 @@ int main() {
 				temp2++;
 			}
 		}
-			
+
 		//stack 앞에 숫자가 있을시
 		if (!stack1.empty()) {
 			if (stack1.top() == temp2) {
@@ -44,13 +44,44 @@ int main() {
 			stack1.push(queue1.front());
 			queue1.pop();
 		}
-		else {
-		//정상적으로 while문 탈출하지 않을 조건
-		result = "Sad";
-		temp2 = N;
-		break;
+		else if (queue1.empty() && stack1.top() != temp2) {
+			//정상적으로 while문 탈출하지 않을 조건
+			result = "Sad";
+			break;
 		}
 	}
-
 	cout << result;
+}
+
+
+수정본
+
+
+//스택, 큐, 덱_12789_도키도키 간식드리미_도학훈
+#include<iostream>
+#include<stack>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+
+	stack<int> stack1;
+
+	int N;
+	cin >> N;
+
+	int temp1, temp2 = 1;
+	for (int i = 0; i < N; i++) {
+		cin >> temp1;
+		if (temp1 == temp2) temp2++;
+		else stack1.push(temp1);
+		while (!stack1.empty() && stack1.top() == temp2) {
+			stack1.pop();
+			temp2++;
+		}
+	}
+	if (stack1.empty()) cout << "Nice";
+	else cout << "Sad";
 }
