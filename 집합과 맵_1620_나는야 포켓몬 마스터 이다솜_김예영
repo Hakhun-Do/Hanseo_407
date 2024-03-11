@@ -41,5 +41,4 @@ public class week6_1620_Pokemon {
 
         sc.close();
     }
-
 }
