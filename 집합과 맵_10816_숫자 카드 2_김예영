@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class week6_10816_NumberCard2 {
+
+    public static void main(String[] args) throws IOException {
+        //코드의 시간 초과로 인해 Scanner에서 BufferedReader 와 StringBuilder를 이용한 입출력 진행
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N, M;
+
+        N = Integer.parseInt(br.readLine());
+        HashMap<String, Integer> nMap = new HashMap<String, Integer>();
+        /* 키(String)에는 숫자카드의 숫자가 들어가고,
+           값(Integer)에는 해당 숫자카드의 중복횟수가 들어간다 */
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for(int i=0; i<N; i++) {
+            String x = st.nextToken();
+
+            /* getOrDefault(key, DefaultValue) 메소드는 찾고자 하는 해당 키(key)가 존재한다면
+               찾는 키의 값을 반환하고 없다면 기본 값(DefaultValue)을 반환하는 메소드이다. */
+            nMap.put(x, nMap.getOrDefault(x, 0) + 1);
+            /* 만약 해당하는 키(x, s[i])가 없다면 0(defaultValue) + 1의 값(value)이 들어가고,
+               해당하는 키(x, s[i])가 있다면 해당하는 키의 값(value) + 1로 들어가서, 해당하는
+               숫자카드의 중복 횟수를 저장할 수 있다. */
+        }
+
+        M = Integer.parseInt(br.readLine());
+
+        st = new StringTokenizer(br.readLine(), " ");
+
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<M; i++) {
+            String x = st.nextToken();
+
+            sb.append(nMap.getOrDefault(x, 0)).append(" ");
+            /* sb라는 StringBuilder에 M의 숫자(x, s[i])에 해당하는 키(숫자카드)가 있다면 값(value, 중복횟수)을
+               sb에 추가(append)하고, 해당하는 키(숫자카드)가 없다면 0을 추가(append)한다. 해당하는 숫자를 넣고
+               마지막으로 " "(공백)을 추가한다. */
+        }
+
+        System.out.println(sb);
+    }
+}
