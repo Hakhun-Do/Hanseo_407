@@ -1,0 +1,52 @@
+//스택, 큐, 덱_18258_큐 2_도학훈
+#include<iostream>
+#include<queue>
+#include<vector>
+using namespace std;
+
+int main(){
+ios_base::sync_with_stdio(false);
+cin.tie(NULL);
+cout.tie(NULL);
+
+int N,M;
+cin>>N;
+string temp;
+queue<int> queue;
+vector<int> vector;
+   for(int i=0;i<N;i++){
+   cin>>temp;
+      if(temp=="push"){
+      cin>>M;
+      queue.push(M);
+      }
+      else if(temp=="pop"){
+      if(queue.empty()) vector.push_back(-1);
+      else{
+      vector.push_back(queue.front());
+      queue.pop();
+      } 
+      }
+         else if(temp=="size"){
+         vector.push_back(queue.size());
+         }
+            else if(temp=="empty"){
+            if(queue.empty()) vector.push_back(1);
+            else vector.push_back(0);
+            }
+               else if(temp=="front"){
+               if(queue.empty()){
+               vector.push_back(-1);
+               }
+               else vector.push_back(queue.front());
+               }
+                  else if(temp=="back"){
+                  if(queue.empty()) vector.push_back(-1);
+                  else vector.push_back(queue.back());
+                  }
+   }
+   M=vector.size();
+   for(int i=0;i<M;i++){
+   cout<<vector[i]<<"\n";
+   }
+}
