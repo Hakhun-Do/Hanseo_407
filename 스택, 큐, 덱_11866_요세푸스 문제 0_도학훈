@@ -1,0 +1,35 @@
+//스택, 큐, 덱_11866_요세푸스 문제 0_도학훈
+#include<iostream>
+#include<queue>
+#include<vector>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N, K;
+    cin >> N >> K;
+    queue<int> per;
+    vector<int> result;
+
+    for (int i = 0; i < N; i++) {
+        per.push(i + 1);
+    }
+
+    while (!per.empty()) {
+        for (int i = 1; i < K; i++) {
+            per.push(per.front());
+            per.pop();
+        }
+        result.push_back(per.front());
+        per.pop();
+    }
+    cout << "<";
+    for (int i = 0; i < N; i++) {
+        
+        if (i == N - 1) cout << result[i]<<">";
+        else cout << result[i] << ", ";
+    }
+}
