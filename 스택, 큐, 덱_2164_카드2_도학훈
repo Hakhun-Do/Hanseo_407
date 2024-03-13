@@ -1,0 +1,24 @@
+//스택, 큐, 덱_2164_카드2_도학훈
+#include<iostream>
+#include<queue>
+#include<vector>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int N;
+    cin >> N;
+    queue<int> card;
+    for (int i = 0; i < N; i++) {
+        card.push(i + 1);
+    }
+    while (card.size()!=1) {
+        card.pop();
+        card.push(card.front());
+        card.pop();
+    }
+    cout << card.front();
+}
