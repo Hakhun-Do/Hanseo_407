@@ -1,0 +1,55 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        String data;
+        String[] s;
+        int T = Integer.parseInt(br.readLine());
+        Stack<String> stack = new Stack<String>(); // "("와 ")"를 저장할 스택을 만든다
+        String[] result = new String [T];
+        // 한 줄에 입력된 괄호들이 제대로 된 괄호인지 확인하고, 그 결과를 result 배열에 저장한다
+
+        // T만큼 반복을 돌리면 한줄 씩 입력 받고 그 결과가 "YES"인지 "NO"인지 확인한다
+        for(int i=0; i<T; i++) {
+            data = br.readLine();
+            s = data.split("");
+            // data에 한줄을 입력받고 s 문자열 배열에 split으로 나누어 저장한다
+            for(int j=0; j<s.length; j++) {
+                // 가장먼저 확인할 것은 입력된 값이 "("경우에는 stack에 넣어준다
+                if (s[j].equals("("))
+                    stack.push(s[j]);
+                /* 하지만 ")"인 경우에는 스택이 비어있을 때 입력되면 완성되지 않은 괄호를
+                   의미하므로 "NO"를 result 문자열 배열에 입력한다 */
+                else if (stack.empty()) {
+                    result[i] = "N0";
+                    stack.push(s[j]);
+                    break;
+                }
+                /* 다만, 이미 스택에 "("가 입력되어 있는 상태에 ")"가 들어온다면 
+                   완성된 괄호를 의미하므로 stack에 입력된 "("를 삭제한다 */
+                else
+                    stack.pop();
+            }
+            
+            // 만약에 스택이 비어있다면, 완성된 괄호를 의미하므로 "YES"를 result에 저장한다
+            if(stack.empty())
+                result[i] = "YES";
+            // 다만 스택에 어떠한 값이라도 남아있다면 완성된 괄호가 아니므로 "NO"를 result에 저장한다
+            else
+                result[i] = "NO";
+            
+            /* 마지막으로 가장 중요한 것은 한 줄에 입력받은 괄호들을 스택에 넣고 확인하는 과정이므로 
+               하나의 반복이 끝난다면 stack의 값들을 모두 지워야 한다 */
+            stack.clear();
+        }
+
+        for(int i=0; i<T; i++)
+            System.out.println(result[i]);
+    }
+}
