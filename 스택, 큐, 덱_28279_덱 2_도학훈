@@ -1,0 +1,63 @@
+//스택, 큐, 덱_28279_덱 2_도학훈
+#include<iostream>
+#include<deque>
+#include<vector>
+#include<string>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(0);
+	cout.tie(0);
+
+	deque<int> deque;
+	vector<int> vector;
+
+	int N;
+	cin >> N;
+	int temp1, temp2;
+
+	for (int i = 0; i < N; i++) {
+		cin >> temp1;
+		switch (temp1){
+		case 1: cin >> temp2;
+			deque.push_front(temp2);
+			break;
+		case 2: cin >> temp2;
+			deque.push_back(temp2);
+			break;
+		case 3: 
+			if (!deque.empty()) {
+				vector.push_back(deque.front());
+				deque.pop_front();
+			}
+			else vector.push_back(-1);
+			break;
+		case 4:
+			if (!deque.empty()) {
+				vector.push_back(deque.back());
+				deque.pop_back();
+			}
+			else vector.push_back(-1);
+			break;
+		case 5: vector.push_back(deque.size());
+			break;
+		case 6: if (deque.empty())vector.push_back(1);
+			  else vector.push_back(0);
+			break;
+		case 7: 
+			if (!deque.empty()) vector.push_back(deque.front());
+			else vector.push_back(-1);
+			break;
+		case 8:
+			if (!deque.empty()) vector.push_back(deque.back());
+			else vector.push_back(-1);
+			break;
+		default:
+			break;
+		}
+	}
+	temp2 = vector.size();
+	for (int i = 0; i < temp2; i++) cout << vector[i] << "\n";
+	
+}
