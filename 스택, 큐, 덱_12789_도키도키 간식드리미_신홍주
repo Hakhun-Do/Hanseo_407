@@ -1,0 +1,29 @@
+# 결국 문제의 핵심은, 현재 간식을 받을 수 있는 친구가 받아야 하는 순번인가를 확인해야 함.
+
+n = int(input())
+line = list(map(int, input().split()))
+
+stack = []
+
+i = 0
+
+while True:
+    # 입력받은 리스트가 비어있지 않고, 리스트의 0번 index에 내가 원하는 입장 순서가 있는가?
+    if line and line[0] == i + 1:
+        del line[0]
+        i += 1
+    # 스택이 비어있지 않고, 스택의 가장 최상단에 내가 원하는 입장 순서가 있는가?
+    elif stack and stack[len(stack) - 1] == i + 1:
+        stack.pop()
+        i += 1
+    else:
+        if not line:
+            print("Sad")
+            break
+        else:
+            stack.append(line[0])
+            del line[0]
+
+    if i == n:
+        print("Nice")
+        break
