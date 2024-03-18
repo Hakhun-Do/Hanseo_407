@@ -1,0 +1,42 @@
+#include <iostream>
+#include <deque>
+#include <vector>
+using namespace std;
+int main() {
+	int n, b, cnt = 0;
+	deque<pair<int,int>> dq;
+	vector<int> l;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> b;
+		dq.push_back(make_pair(b, i+1));
+	}
+	b = 0;
+	for (int i = 0; i < n; i++) {
+		if (b > 0) {
+			while (cnt != b-1)
+			{
+				dq.push_back(dq.front());
+				dq.pop_front();
+				cnt++;
+			}
+			l.push_back(dq.front().second);
+			b = dq.front().first;
+			dq.pop_front();
+		}
+		else {
+			while (cnt != b)
+			{
+				dq.push_front(dq.back());
+				dq.pop_back();
+				cnt--;
+			}
+			l.push_back(dq.front().second);
+			b = dq.front().first;
+			dq.pop_front();
+		}
+		cnt = 0;
+	}
+	for (int i = 0; i < n; i++)
+		cout << l[i] << " ";
+}
