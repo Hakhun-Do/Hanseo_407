@@ -1,0 +1,48 @@
+import sys
+
+while True:
+    line = sys.stdin.readline().rstrip()
+
+    if line == '.':
+        break
+
+    is_regular = True
+
+    stack = []
+
+    for i in line:
+        if i == '(' or i == '[':
+            stack.append(i)
+        elif i == ')' or i == ']':
+            if i == ')':
+                if not stack:
+                    print("no")
+                    is_regular = False
+                    break
+
+                if stack[len(stack) - 1] == '(':
+                    stack.pop()
+                else:
+                    print("no")
+                    is_regular = False
+                    break
+            else:
+                if not stack:
+                    print("no")
+                    is_regular = False
+                    break
+                
+                if stack[len(stack) - 1] == '[':
+                    stack.pop()
+                else:
+                    print("no")
+                    is_regular = False
+                    break
+
+    if not is_regular:
+        pass
+    else:
+        if stack:
+            print("no")
+        else:
+            print("yes")
