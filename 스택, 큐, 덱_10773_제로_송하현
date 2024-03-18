@@ -1,0 +1,21 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+int main() {
+	int n, a, sum = 0;
+	stack<int> stk;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		if (a == 0)
+			stk.pop();
+		else
+			stk.push(a);
+	}
+	n = stk.size();
+	for (int i = 0; i < n; i++) {
+		sum += stk.top();
+		stk.pop();
+	}
+	cout << sum;
+}
