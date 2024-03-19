@@ -1,0 +1,30 @@
+from collections import deque
+
+n = int(input())
+
+balloon = input().split()
+
+for i in range(n):
+    balloon[i] = int(balloon[i])
+
+# enumrate => 인덱스를 튜플에 넣어주는 함수
+balloon = enumerate(balloon, start = 1)
+
+balloon = deque(balloon)
+
+boom = list()
+
+while balloon:
+    boom.append(balloon[0][0])
+
+    r = balloon[0][1]
+
+    balloon.popleft()
+
+    if r > 0:
+        balloon.rotate(1 - r)
+    else:
+        balloon.rotate(-r)
+
+for i in boom:
+    print(i, end = " ")
