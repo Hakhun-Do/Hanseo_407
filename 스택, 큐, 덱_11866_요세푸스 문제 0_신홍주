@@ -1,0 +1,27 @@
+import sys
+from collections import deque
+
+n, k = map(int, sys.stdin.readline().split())
+
+num = deque()
+yosepus = []
+
+k -= 1
+
+for i in range(n):
+    num.append(i + 1)
+
+while num:
+    num.rotate(-k)
+    yosepus.append(num.popleft())
+
+print("<", end = "")
+for i in range(n):
+    if len(range(n)) == 1:
+        print(yosepus[i], end = "")
+    else:
+        if i < n - 1:
+            print(yosepus[i], end = ", ")
+        else:
+            print(yosepus[i], end = "")
+print(">")
