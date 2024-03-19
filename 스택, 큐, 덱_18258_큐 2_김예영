@@ -1,0 +1,63 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+        Deque<Integer> queue = new LinkedList<Integer>();
+        // 마지막 요소를 보여주는 peekLast 메소드는 Queue에는 없고 덱에 있기 때문에 Deque 사용
+        StringBuilder sb = new StringBuilder();
+
+        for(int i=0; i<N; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            String x = st.nextToken();
+            switch (x) {
+                case "push":
+                    int y = Integer.parseInt(st.nextToken());
+                    queue.add(y);
+                    break;
+
+                case "pop":
+                    if(queue.isEmpty())
+                        sb.append(-1).append("\n");
+                    else
+                        sb.append(queue.poll()).append("\n");
+                    break;
+
+                case "size":
+                    sb.append(queue.size()).append("\n");
+                    break;
+
+                case "empty":
+                    if(queue.isEmpty())
+                        sb.append(1).append("\n");
+                    else
+                        sb.append(0).append("\n");
+                    break;
+
+                case "front":
+                    if(queue.isEmpty())
+                        sb.append(-1).append("\n");
+                    else
+                        sb.append(queue.peek()).append("\n"); // 비어있으면 null
+                        // queue.element()도 가능하지만 peek과 달리 Queue가 비었을 때 NoSuchElementException 발생
+                    break;
+
+                case "back":
+                    if(queue.isEmpty())
+                        sb.append(-1).append("\n");
+                    else
+                        sb.append(queue.peekLast()).append("\n");
+                        // 마지막 요소를 보여주는 peekLast 메소드는 Queue에는 없고 덱에 있기 때문에 Deque 사용
+                    break;
+            }
+        }
+        
+        System.out.println(sb);
+    }
+}
