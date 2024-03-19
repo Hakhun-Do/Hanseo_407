@@ -1,0 +1,29 @@
+//심화 2_25192_인사성 밝은 곰곰이_도학훈
+#include<iostream>
+#include<map>
+#include<vector>
+
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, sum=0;
+	cin>>N;
+	string name;
+	map<string, int> log;
+	for(int  i=0;i<N;i++){
+		cin>>name;
+		if(name=="ENTER"){
+			sum=sum+log.size();
+			 log.clear();
+		}
+		else{
+			log[name]=1;
+		}
+	}
+	sum=sum+log.size();
+	cout<<sum;
+}
