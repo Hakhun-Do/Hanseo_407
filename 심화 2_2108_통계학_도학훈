@@ -1,0 +1,33 @@
+//심화 2_2108_통계학_도학훈
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, temp, sum = 0;
+	cin >> N;
+
+	vector<int> vector1;
+	vector<int> vector2;
+	map<int, int> map;
+
+	for (int i = 0; i < N; i++) {
+		cin >> temp;
+		vector1.push_back(temp);
+		sum += temp;
+		map[temp]++;
+	}
+	// 첫번째 결과 - 산술평균
+	vector2.push_back(sum / N);
+	// 두번째 결과 - 중앙값
+	temp = N / 2 + 1;
+	vector2.push_back(vector1[temp]);
+	// 세번째 결과 - 최빈값
+
+}
