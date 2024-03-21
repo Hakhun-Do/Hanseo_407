@@ -1,0 +1,21 @@
+import sys
+
+n = int(input())
+
+line = set()
+
+gomgom = 0
+
+for i in range(n):
+    temp = sys.stdin.readline().rstrip()
+
+    if temp == "ENTER":
+        gomgom += len(line)
+        line.clear()
+
+    else:
+        line.add(temp)
+
+gomgom += len(line)
+
+print(gomgom)
