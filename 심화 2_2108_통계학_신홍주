@@ -1,0 +1,27 @@
+import sys
+import statistics   # 통계학
+
+n = int(input())
+
+num = list()
+
+for i in range(n):
+    num.append(int(sys.stdin.readline().rstrip()))
+
+num.sort()
+
+mean = sum(num) / len(num)
+median = statistics.median(num) # 중앙값
+mode = statistics.multimode(num)    # 다수의 최빈값이 있을 때 리스트로 반환
+range_ = num[len(num) - 1] - num[0]
+
+result = list()
+
+if len(mode) != 1:
+    mode.sort()
+    result = [round(mean), median, mode[1], range_]
+else:
+    result = [round(mean), median, mode[0], range_]
+
+for i in result:
+    print(i)
