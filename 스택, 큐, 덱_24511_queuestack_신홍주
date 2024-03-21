@@ -1,0 +1,45 @@
+import sys
+from collections import deque
+
+n = int(sys.stdin.readline().rstrip())
+a = list(map(int, sys.stdin.readline().split()))
+b = list(map(int, sys.stdin.readline().split()))
+m = int(sys.stdin.readline().rstrip())
+c = list(map(int, sys.stdin.readline().split()))
+
+result = list()
+queuestack = deque()
+
+for i in range(n):
+    if a[i] == 0:
+        queuestack.append(b[i])
+
+for i in range(m):  # 스택에 원소를 삽입했다가 빼면 결국 같은 원소이기에,
+                    # 굳이 스택에 원소를 삽입할 필요가 없다. <- 이 아이디어 너무 어렵다.
+    queuestack.appendleft(c[i])
+    result.append(queuestack.pop())
+
+# questack을 직접 구현해서 푼 경우.
+# 이 경우엔 시간제한을 지킬 수 없다.
+# for i in range(m):
+#     for j in range(n):
+#         if j == 0:
+#             queuestack[j].append(c[i])
+            
+#             if a[j] == 0:
+#                 temp = queuestack[j].popleft()
+#             elif a[j] == 1:
+#                 temp = queuestack[j].pop()
+
+#         else:
+#             queuestack[j].append(temp)
+            
+#             if a[j] == 0:
+#                 temp = queuestack[j].popleft()
+#             elif a[j] == 1:
+#                 temp = queuestack[j].pop()
+    
+#     result.append(temp)
+
+for i in result:
+    print(i, end = " ")
