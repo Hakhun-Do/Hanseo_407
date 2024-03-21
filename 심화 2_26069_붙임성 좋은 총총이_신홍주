@@ -1,0 +1,14 @@
+import sys
+
+n = int(input())
+
+dancing = set(["ChongChong"])
+
+for i in range(n):
+    line = sys.stdin.readline().split()
+
+    for item in line:
+        if item in dancing:
+            dancing.update(line)
+
+print(len(dancing))
