@@ -1,0 +1,54 @@
+import java.util.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class week7_2346_Balloon {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(br.readLine());
+        String[] s;
+        s = br.readLine().split(" ");
+        Deque<int[]> deque = new ArrayDeque<>();
+        /* 덱을 생성하지만 여기서 사용되는 객체는 LinkedList가 아닌 ArrayDeque를 사용한다
+           LinkeList를 사용하면 메모리 초과로 문제 실패가 되버린다
+           따라서 덱에 배열을 넣는 지금같은 경우에는 ArrayDeque로 객체를 생성한다 */
+        int[] x = new int[2];
+        // 덱의 첫번째 값(풍선의 숫자)과 두번째 값(풍선 속 쪽지)을 받을 배열을 생성
+        int repeat;
+        // 쪽지에 적힌 수 만큼 반복을 하기위해 쪽지에 적힌 수를 저장할 변수 생성
+
+        for (int i = 1; i <= N; i++)
+            deque.add(new int[]{i, Integer.parseInt(s[i-1])});
+        /* 덱의 첫번째 배열에는 풍선의 숫자를 순서대로 넣고, 두번째 배열에는 해당 풍선 속에 있는
+           쪽지의 수를 넣는다 */
+
+        StringBuilder sb = new StringBuilder();
+        // 연속된 출력값을 저장후 출력하기 위해 StringBuilder 객체 생성
+        x = deque.poll(); // 풍선 터뜨리기의 시작은 첫번째 풍선부터 임으로 첫번째 풍선을 터뜨리기
+        // 첫번째 풍선의 번호와 쪽지의 정보를 x에 저장
+        sb.append(x[0]).append(" "); // x[0]에는 터진 풍선의 번호가 저장되어 있다
+        while(!deque.isEmpty()) { // 큐가 완전히 빌때까지 풍선터뜨리기를 반복
+            if(x[1] > 0) { // 쪽지의 수가 양수일 때
+                repeat = x[1]; // 반복의 기준이 되는 쪽지의 정보를 repeat 변수에 저장
+                for(int i=1; i<repeat; i++)
+                    deque.add(deque.poll());
+                // 첫번째 요소를 마지막으로 이동시키기
+                x = deque.poll(); // 해당 풍선(터진 풍선)의 정보를 x에 저장
+                sb.append(x[0]).append(" "); // 터진 풍선의 번호(x[0])를 기록
+            }
+            else { // 쪽지의 수가 음수일 때
+                repeat = x[1]; // 반복의 기준이 되는 쪽지의 정보를 repeat 변수에 저장
+                for(int i=1; i<-repeat; i++) // 음수의 절대값 만큼 반복을 해야하기 때문에 -1 곱하기
+                    deque.addFirst(deque.pollLast());
+                // 마지막 요소를 처음으로 이동시키기
+                x = deque.pollLast(); // 해당 풍선(터진 풍선)의 정보를 x에 저장
+                sb.append(x[0]).append(" "); // 터진 풍선의 번호(x[0])를 기록
+            }
+        }
+
+        System.out.println(sb);
+    }
+}
