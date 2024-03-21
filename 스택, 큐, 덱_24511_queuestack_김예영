@@ -1,44 +1,41 @@
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+import java.io.*;
 
 public class week7_24511_QueueStack {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] s;
         int N = Integer.parseInt(br.readLine());
-        int M;
-        int[][] qs = new int[3][N];
+        int[] A = new int[N]; // 해당 자료구조가 큐인지 스택인지 확인하기 위한 배열
+        Deque<Integer> deque = new LinkedList<>(); // 최종적으로 출력되는 값들을 계산하기 위한 덱
 
-        for (int i = 0; i < 2; i++) {
-            s = br.readLine().split(" ");
-            for (int j = 0; j < N; j++) {
-                qs[i][j] = Integer.parseInt(s[j]);
-            }
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        for(int i=0; i<N; i++) { // 입력받은 0과 1을 배열 A에 하나씩 정수형으로 변환하여 입력
+            A[i] = Integer.parseInt(st.nextToken());
         }
 
-        M = Integer.parseInt(br.readLine());
-        s = br.readLine().split(" ");
-
-        for (int i = 0; i < M; i++) {
-            int start = Integer.parseInt(s[i]);
-            int out = start;
-            for (int j = 0; j < N; j++) {
-                if (qs[0][j] == 0) {
-                    qs[2][j] = qs[1][j];
-                    qs[1][j] = out;
-                    out = qs[2][j];
-                }
-                else {
-                    qs[2][j] = out;
-                    out = qs[2][j];
-                }
-            }
-            System.out.print(out + " ");
+        st = new StringTokenizer(br.readLine(), " ");
+        for(int i=0; i<N; i++) { // 큐와 스택으로 이루어진 자료구조으 초기값을 받고 필요한 값만 골라 덱에 넣는 과정
+            /* 큐와 스택으로 이루어진 자료구조는 쉽게 생각해서 각 하나의 공간을 가지는 큐와 스택으로 이루어져 있다
+               따라서 입력 받은 값을 넣고, 기존에 있는 값을 출력하는 이 구조에서는 큐는 입력과 출력이 다른 값이지만,
+               스택을 들어간 값이 그대로 나오기 때문에 변경이 없다. 따라서 스택인 경우는 덱에 입력하지 말고 큐인
+               경우에만 덱에 필요한 정보(덱에 들어가는 초기값(B))를 미리 넣어둔다 */
+            int B = Integer.parseInt(st.nextToken());
+            // 0인 경우에는 큐 이므로 B를 큐에 넣고, 1인 경우에는 스택이므로 출력되는 값이 달라지지 않기에 그냥 넘어간다
+            if(A[i] == 0)
+                deque.addLast(B);
         }
 
+        int M = Integer.parseInt(br.readLine());
+        st = new StringTokenizer(br.readLine(), " ");
+        for(int i=0; i<M; i++) { // 최종적으로 입력되는 값들을 미리 만들어 둔 덱에 첫번째 값으로 넣는다
+            deque.addFirst(Integer.parseInt(st.nextToken()));
+            bw.write(deque.pollLast()+" ");
+            // 덱의 마지막 값을 순차적으로 반환 시키고 그 값을 출력한다
+        }
+        // 버퍼를 출력시킨 후 남아 있는 버퍼를 비워야 한다
+        bw.flush();
     }
 }
