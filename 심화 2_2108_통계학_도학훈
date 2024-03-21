@@ -23,11 +23,13 @@ int main() {
 		sum += temp;
 		map[temp]++;
 	}
-	// 첫번째 결과 - 산술평균
+	// 첫번째 결과 - 산술평균 !!반올림로직
 	vector2.push_back(sum / N);
 	// 두번째 결과 - 중앙값
 	temp = N / 2 + 1;
 	vector2.push_back(vector1[temp]);
 	// 세번째 결과 - 최빈값
-
+	
+	// 네번째 결과 - 범위
+	
 }
