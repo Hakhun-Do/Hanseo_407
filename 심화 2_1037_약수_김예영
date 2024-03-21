@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int[] arr = new int[N];
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+            max = Math.max(max, arr[i]);
+            min = Math.min(min, arr[i]);
+        }
+
+        /* BufferedWriter는 System.out.println(""); 처럼 출력과 개행을 동시해 해주지 않기 때문에, 개행을 위해선
+        따로 newLine(); 혹은 bw.write("\n");을 사용해야한다. 그리고 BufferedWriter의 경우 버퍼를 잡아 놓았기 때문에
+        반드시 사용한 후에, flush()/ close()를 해주어야 한다. close()를 하게되면, 출력 스트림을 아예 닫아버리기 때문에 한번 출력후,
+        다른 것도 출력하고자 한다면 flush()를 사용하면 된다. */
+        bw.write(max * min + "");
+        // 또한 정수형 변수만 출력할 수 없으므로 write() 문 안에 들어가는 변수가 String이 될 수 있도록 +"" 를 해준다
+        bw.flush();
+    }
+}
