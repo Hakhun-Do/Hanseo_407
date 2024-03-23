@@ -1,0 +1,40 @@
+//심화 2_20920_영단어 암기는 괴로워_도학훈
+#include <iostream>
+#include <vector>
+#include <map>
+#include<algorithm>
+using namespace std;
+
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, M;
+	cin >> N >> M;
+
+	string temp;
+	map<string, int> map;
+
+	/* 출력 조건 1. 자주나오는 단어일수록 앞에 배치
+			조건 2. 단어의 길이가 길수록 앞에 배치
+			조건 3. 알파벳 사전 순으로 앞에 배치 */
+
+	for (int i = 0; i < N; i++) {
+		cin >> temp;
+		if (temp.size() >= M) map[temp]++;//조건 3
+	}
+	
+	vector<pair<string, int>> vector(map.begin(), map.end());
+
+	stable_sort(vector.begin(), vector.end(), [](pair<string, int> lp, pair<string, int> rp)->bool { // 조건 2
+		return lp.first.length() > rp.first.length();
+		});
+	stable_sort(vector.begin(), vector.end(), [](pair<string, int> lp, pair<string, int> rp)->bool { // 조건 1
+		return lp.second > rp.second;
+		});
+
+	for (int i = 0; i < vector.size(); i++) {
+		cout << vector[i].first << '\n';
+	}
+}
