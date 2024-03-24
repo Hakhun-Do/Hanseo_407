@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <set>
+using namespace std;
+struct Word
+{
+	string word;//단어
+	int size;//길이
+	int times;//나온 빈도
+
+};
+bool comp(Word& a, Word& b) {//정렬 조건
+	if (a.times != b.times) {//빈도가 다를때
+		return a.times > b.times;
+	}
+	else {//빈도가 같을때
+		if (a.size != b.size)//길이가 다를때
+			return a.size > b.size;
+		else//길이까지 같을때
+			return a.word < b.word;
+	}
+}
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	string a;
+	Word word;
+	vector<Word> list;
+	multiset<string> wlist;
+	int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		if (a.size() >= m) {
+			wlist.insert(a);
+		}
+	}
+	for (auto i = wlist.begin(); i != wlist.end(); i = wlist.upper_bound(i->data())) {//중복값의 끝부분의 반복자를 i값으로 함으로 중복값을 건너뛰기
+		word.word = i->data();
+		word.size = i->size();
+		word.times = wlist.count(i->data());
+		list.push_back(word);
+	}
+	sort(list.begin(), list.end(), comp);
+	for (int i = 0; i < list.size(); i++) {
+		cout << list[i].word << "\n";
+	}
+}
