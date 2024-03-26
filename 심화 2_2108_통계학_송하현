@@ -1,0 +1,56 @@
+#include <iostream>
+#include <map>
+#include <cmath>
+#include <set>
+using namespace std;
+int main() {
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	int n, a, min = 4000, max = -4000, mid = 0, m, b=0;
+	double avg=0;
+	bool chk = true;
+	map<int, int> list;
+	set<int > nl;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		avg += a;
+		if (list.find(a) == list.end())
+			list.insert({ a, 1 });
+		else
+			list.at(a) += 1;
+	}
+	if (round(avg / n) == -0)//산술평균 출력
+		cout << 0 << "\n";
+	else
+		cout << round(avg / n) << "\n";
+	for (auto i = list.begin(); i != list.end(); i++) {
+		if (i->first < min)
+			min = i->first;
+		if (i->first > max)
+			max = i->first;
+		if (i->second + mid >= (n / 2)+1&& chk == true){
+			cout << i->first << "\n";//중앙값 출력
+			chk = false;
+		}
+		else if(chk == true)
+			mid += i->second;
+		if (i->second == b) {//최빈값
+			b = i->second;
+			nl.insert(i->first);
+		}
+		else if (i->second > b){
+			b = i->second;
+			nl.clear();
+			nl.insert(i->first);
+		}
+	}
+	auto s = nl.begin();
+	if(nl.size()==1)// 최빈값 출력
+		cout << *s << "\n";
+	else {
+		cout << *(++s) << "\n";
+	}
+	cout << abs(max - min);//차이
+}
