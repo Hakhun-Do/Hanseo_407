@@ -1,0 +1,23 @@
+#include <iostream>
+#include <set>
+using namespace std;
+int main() {
+	string a;
+	set<string> list;
+	int n, sum = 0;
+	bool chk=false;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a;
+		if (a == "ENTER")
+			chk = true;
+		if (a == "ENTER" && chk) {
+			sum += list.size();
+			list.clear();
+		}
+		else
+			list.insert(a);
+	}
+	sum += list.size();
+	cout << sum;
+}
