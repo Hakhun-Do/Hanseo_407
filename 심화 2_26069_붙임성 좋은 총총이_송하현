@@ -1,0 +1,25 @@
+#include <iostream>
+#include <map>
+using namespace std;
+int main() {
+	map<string, bool> list;
+	int n, cnt=0;
+	string a, b;
+	list.insert({ "ChongChong", 1 });
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> a >> b;
+		if (list.find(a)==list.end())
+			list.insert({ a, 0 });
+		if (list.find(b) == list.end())
+			list.insert({ b, 0 });
+		if (list[a] == true || list[b] == true){
+			list[a] = 1;
+			list[b] = 1;
+		}
+	}
+	for (auto i = list.begin(); i != list.end(); i++)
+		if (i->second)
+			cnt++;
+	cout << cnt;
+}
