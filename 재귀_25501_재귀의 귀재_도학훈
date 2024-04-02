@@ -4,12 +4,10 @@
 #include<vector>
 using namespace std;
 
-vector<pair<int, int>> output;
-
 int recursion(const string& s, int l, int r, int m) { //비교하여 값 출력
-    m++;// 함수 호출 횟수
-    if (l >= r) return 1;// 대칭일때 비대칭과 구별하기 위해 값에 9999 더함
-    else if (s[l] != s[r]) return 0;
+    m++;//m은 함수 호출 횟수
+    if (l >= r) return (m + 9999);// 대칭일때 비대칭과 구별하기 위해 값에 9999 더함
+    else if (s[l] != s[r]) return m;
     else return recursion(s, l + 1, r - 1, m);
 }
 
@@ -18,14 +16,20 @@ int isPalindrome(const string& s) { //비교 대상 설정
 }
 
 int main() {
+
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
     int n; //입력할 단어 개수
     cin >> n;
+    vector<int> output;
     string input;
 
     for (int i = 0; i < n; i++) {
         cin >> input;
         output.push_back(isPalindrome(input));
-   }
+    }
     for (int i = 0; i < n; i++) {
         if (output[i] > 9999) cout << "1 " << output[i] - 9999;
         else cout << "0 " << output[i];
