@@ -1,0 +1,27 @@
+//조합론_1010_다리 놓기_도학훈
+#include<iostream>
+#include<vector>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    int t; 
+    cin >> t;
+    int n, m;
+    long long sum = 1; //(0 < n <= m < 30)
+    for (int i = 0; i < t; i++) {
+        cin >> n >> m;
+        sum = 1;
+        int j = 1;
+        for (int i = m; i > m - n; i--) {
+            sum = sum * i;
+            sum = sum / j;
+            j++;
+        }
+        cout << sum << "\n";
+    }
+    return 0;
+}
