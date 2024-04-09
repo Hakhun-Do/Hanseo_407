@@ -9,19 +9,16 @@ public class Main {
 
         int T = Integer.parseInt(br.readLine());
 
-
         for (int i = 0; i < T; i++) { // M개의 원소 중의 N개의 원소를 선택할 수 있는 경우의 수 세기(조합)
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
             int N = Integer.parseInt(st.nextToken());
             int M = Integer.parseInt(st.nextToken());
             long result = 1;
-            int k =1;
 
-            for(int j=M; j>M-N;j--) {
-                result *= j;
-                result /= k;
-                k++;
+            for (int j = 0; j < N; j++) {
+                result *= (M-j);
+                result /= (j+1);
             }
 
             bw.write(result + "\n");
