@@ -1,0 +1,16 @@
+# 이건 팩토리얼의 정의를 가지고 구현한 것.
+# n = int(input())
+
+# factorial = 1
+
+# for i in range(1, n + 1):
+#     factorial *= i
+
+# print(factorial)
+
+#이건 팩토리얼 함수를 가지고 구현한 것.
+import math
+
+n = int(input())
+
+print(math.factorial(n))
