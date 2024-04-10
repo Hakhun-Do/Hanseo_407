@@ -1,0 +1,12 @@
+# 이항계수란, 주어진 크기의 순서 없는 조합의 가짓수
+# https://namu.wiki/w/%EC%9D%B4%ED%95%AD%EC%A0%95%EB%A6%AC#s-1.1
+import math
+
+n, k = input().split()
+
+n = int(n)
+k = int(k)
+
+bi_co = math.factorial(n) // (math.factorial(n - k) * math.factorial(k))
+
+print(int(bi_co))
