@@ -1,0 +1,5 @@
+n = int(input())
+
+combination = 2 ** n
+
+print(combination)
