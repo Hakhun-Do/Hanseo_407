@@ -1,0 +1,15 @@
+# 이항계수 문제로 생각할 수 있음?
+
+import math
+
+t = int(input())
+
+for i in range(t):
+    n, m = input().split()
+
+    n = int(n)
+    m = int(m)
+
+    bi_co = math.factorial(m) // (math.factorial(m - n) * math.factorial(n))
+
+    print(bi_co)
