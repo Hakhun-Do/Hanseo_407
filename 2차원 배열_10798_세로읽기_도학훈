@@ -1,0 +1,23 @@
+//2차원 배열_10798_세로읽기_도학훈
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	string temp[15];
+	string input;
+	for (int i = 0; i < 5; i++) {
+		cin >> input;
+		for (int j = 0; j < input.length(); j++) {
+			temp[j] += input[j];
+		}
+	}
+	for (int i = 0; i < 15; i++) {
+		cout << temp[i];
+	}
+	return 0;
+}
