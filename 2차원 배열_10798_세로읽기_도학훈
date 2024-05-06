@@ -7,7 +7,9 @@ int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
-
+	//문제를 읽어봤을때, char temp[5][15] 이런 형태로 만들생각을 했었지만
+	//굳이 2차원 배열로 안만들고, input으로 한줄 입력 받고
+	//각 문자의 순서마다 temp 1차원 배열에 넣어 나중에 출력하는게 낫다 판단했음.
 	string temp[15];
 	string input;
 	for (int i = 0; i < 5; i++) {
