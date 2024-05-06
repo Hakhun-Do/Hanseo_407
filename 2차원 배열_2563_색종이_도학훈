@@ -1,0 +1,36 @@
+//2차원 배열_2563_색종이_도학훈
+#include<iostream>
+#include<vector>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int count1, count2 = 0;
+	//count1은 붙일 검은색 색종이의 개수
+	//count2는 붙인 검은색 색종이의 영역의 넓이
+	int x, y;
+	//x,y는 각 색종이가 붙여지는 좌표의 시작점
+	cin >> count1;
+	int square[100][100] = { 0 };
+	//square로 전체 도화지의 영역을 2차원 배열로 나타냄
+	//3중 for문을 사용하여 x,y좌표를 받으면 해당하는 영역을 1로 바꿨음.(시간초과 예상하고 문제 풀었는데, 통과여서 놀랐음)
+	for (int i = 0; i < count1; i++) {
+		cin >> x >> y;
+		for (int m = x; m < x + 10; m++) {
+			for (int n = y; n < y + 10; n++) {
+				square[m][n] = 1;
+			}
+		}
+	}
+	//2중 for문 사용하여 도화지의 영역에서 1인 부분을 찾아 더함
+	for (int i = 0; i < 100; i++) {
+		for (int j = 0; j < 100; j++) {
+			if (square[i][j] == 1) count2++;
+		}
+	}
+	cout << count2;
+	return 0;
+}
