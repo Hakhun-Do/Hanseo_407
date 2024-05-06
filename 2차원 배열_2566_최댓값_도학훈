@@ -1,16 +1,15 @@
 //2차원 배열_2566_최댓값_도학훈
 #include<iostream>
 #include<vector>
-
 using namespace std;
 int main() {
-
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 
 	int top = 0, point1, point2, temp;
-
+	//따로 2차원 배열을 만들지 않고, 값을 2차원 배열 형태로 받으면서 최댓값과 그 좌표를 구했음.
+	//처음에 오류가 있었던것은 if문 조건을 (top<temp)형태로 하여 =를 붙이지 않아 모두 0일때 못구했었음.
 	for (int i = 0; i < 9; i++) {
 		for (int j = 0; j < 9; j++) {
 			cin >> temp;
