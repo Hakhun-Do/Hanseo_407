@@ -13,6 +13,9 @@ int main() {
 	cin >> N >> M;
 	vector<vector<int>> vector1(N, vector<int>(M));
 	vector<vector<int>> vector2(N, vector<int>(M));
+	//행렬 A,B,더한 행렬까지 총 3개의 2차원 vector 사용할까 했지만
+	//첫번째의 행렬에다가 두번째 행렬을 입력받을때 더하여, 출력 행렬까지
+	//2개의 행렬만 있으면 된다고 생각하여 문제풀이 했음.
 	for (int i = 0; i < N; i++) {
 		for (int j = 0; j < M; j++) {
 			cin >> temp;
