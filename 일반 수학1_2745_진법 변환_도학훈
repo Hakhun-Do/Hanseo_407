@@ -1,0 +1,33 @@
+//일반 수학1_2745_진법 변환_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	string change;
+	int how;
+	int sum = 0;
+	int temp;
+	int j = 0;
+	cin >> change;
+	cin >> how;
+	for (int i = change.length() - 1; i >= 0; i--) {
+		temp = int(change[i]);
+		if (temp <= 57) {
+			temp -= 48;
+			sum = sum + (temp*pow(how, j));
+		}
+		else {
+			temp -= 55;
+			sum = sum + (temp * pow(how, j));
+		}
+		j++;
+	}
+	cout << sum;
+	return 0;
+}
