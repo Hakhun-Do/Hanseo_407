@@ -1,0 +1,32 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int[][] paper = new int[100][100]; // 흰색 도화지에 크기 만큼 2차원 배열 생성
+        int N = Integer.parseInt(br.readLine()); // 입력 받을 종이의 개수 N 입력 받기
+        int result = 0; // 검은색 색종이의 총 면적
+
+        for(int k=0; k<N;k++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int x = Integer.parseInt(st.nextToken()); // 도화지와 색종이의 왼쪽 거리 차이
+            int y = Integer.parseInt(st.nextToken()); // 도화지와 색종이의 아래쪽 거리 차이
+            for(int i=x; i<x+10; i++)
+                for(int j=y; j<y+10;j++)
+                    paper[i][j] = 1;
+            /* 해당 검은색 색종이의 면적을 모두 1로 바꾸고, 다른 색종이와 겹치는 부분이 있더라도
+               해당 검은색 색종이의 면적이 1로만 바뀌기 때문에 겹치는 부분은 중첩이 안됨 */
+        }
+
+        for(int i=0;i<100;i++) // 흰색 도화지인 2차원 배열의 검은색 색종이의 모든 면적 더하기
+            for(int j=0;j<100;j++)
+                result += paper[i][j];
+        
+        bw.write(result+""); // 검은색 색종이의 면적을 버퍼에 입력
+        bw.flush(); // 버퍼 출력
+    }
+}
