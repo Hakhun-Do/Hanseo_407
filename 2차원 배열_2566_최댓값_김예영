@@ -1,0 +1,36 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int max = 0; // 입력되는 값중 최솟값이 0이기 때문에 최대값을 저장할 변수를 0으로 초기화
+        int mx = 1, my = 1; // 해당 최댓값의 좌표를 저장할 변수
+        /* 모든 값이 0으로 들어가는 경우에, 행렬 중 어느 하나의 요소만 들어가면 되므로
+           해당 최댓값의 좌표를 (1,1)로 초기화 
+           사실, 어느 좌표로 초기화 해도 무관 */
+
+        for (int i = 1; i < 10; i++) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            // 해당 행의 모든 값 입력 받고 공백(" ")으로 나누기
+            for (int j = 1; j < 10; j++) {
+                int x = Integer.parseInt(st.nextToken());
+                if (x > max) {
+                    // 입력된 값이 최댓값(max)보다 크다면 해당 값을 max에 저장
+                    max = x;
+                    mx = i;
+                    my = j;
+                    // 최댓값의 해당 좌표(i, j)를 (mx, my)에 저장
+                }
+            }
+        }
+
+        bw.write(max + "\n" + mx + " " + my);
+        // 버퍼에 최댓값(max)를 입력하고 줄바꿈("\n")입력 후, mx + " " + my 를 버퍼에 입력
+        bw.flush();
+        // 버퍼 출력
+    }
+}
