@@ -1,0 +1,29 @@
+import sys
+
+n, m = sys.stdin.readline().split()
+
+n = int(n)
+m = int(m)
+
+a = []
+b = []
+c = []
+
+for i in range(n):
+    temp = list(map(int, sys.stdin.readline().split()))
+    a.append(temp)
+
+for i in range(n):
+    temp = list(map(int, sys.stdin.readline().split()))
+    b.append(temp)
+
+for i in range(n):
+    temp = []
+    for j in range(m):
+        temp.append(a[i][j] + b[i][j])
+    c.append(temp)
+
+for i in range(n):
+    for j in range(m):
+        print(c[i][j], end = " ")
+    print()
