@@ -1,0 +1,42 @@
+//일반 수학1_11005_진법 변환 2_도학훈
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N;// 10진법 수
+	int B;// 바꿔야할 진법
+	cin >> N >> B;
+
+	int quotient;// 몫
+	int remainder;// 나머지
+	stack<int> stack;//결과 값 저장
+	char change;
+	while (true) {
+		remainder = N % B;
+		quotient = N / B;
+		if (N < B) {
+			stack.push(N);
+			break;
+		}
+		stack.push(remainder);
+		N = quotient;
+		
+			
+	}
+	N = stack.size();
+	for (int i = 0; i < N; i++) {
+		if (stack.top() > 9) {
+			change = (stack.top() + 55);
+			cout << change;
+		}
+		else cout << stack.top();
+		stack.pop();
+	}
+	return 0;
+}
