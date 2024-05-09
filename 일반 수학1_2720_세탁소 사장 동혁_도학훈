@@ -1,0 +1,38 @@
+//일반 수학1_2720_세탁소 사장 동혁_도학훈
+#include<iostream>
+#include<vector>
+#include<stack>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	int T; //테스트케이스
+	int C; //거스름돈
+	vector<int> result; //결과 값 저장
+	//거스름돈 단위
+	int quarter = 25;
+	int dime = 10;
+	int nickel = 5;
+	int penny = 1;
+	
+	cin >> T;
+	for (int i = 0; i < T; i++) {
+		cin >> C;
+		result.push_back(C / quarter);
+		C = C % quarter;
+		result.push_back(C / dime);
+		C = C % dime;
+		result.push_back(C / nickel);
+		C = C % nickel;
+		result.push_back(C / penny);
+		C = C % penny;
+	}
+	for (int i = 0; i < (T*4); i++) {
+		
+		cout << result[i]<<" ";
+		if (i % 4 == 3)cout << "\n";
+	}
+	return 0;
+}
