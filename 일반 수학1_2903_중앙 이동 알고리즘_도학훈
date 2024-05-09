@@ -1,0 +1,28 @@
+//일반 수학1_2903_중앙 이동 알고리즘_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	/* 결과 값이 3의 제곱 -> 5의 제곱 -> 9의 제곱
+	* -> 17의 제곱 -> 32의 제곱으로 증가되는 것을 확인하여
+	* 각 값에 2의 1승, 2승, 3승 이런식으로 증가되는 것을 알아냄
+	*/
+	int N;
+	cin >> N;
+	int temp = 3;
+	int i = 1;
+	long long result;
+	while (true) {
+		if (i == N)break;
+		temp = temp + pow(2, i);
+		i++;
+	}
+	result= pow(temp, 2);
+	cout << result;
+	return 0;
+}
