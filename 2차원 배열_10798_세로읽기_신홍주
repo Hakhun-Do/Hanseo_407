@@ -1,0 +1,29 @@
+import sys
+
+word_list = []
+longest = 0
+read = []
+
+# 입력부
+for i in range(5):
+    word_list.append(sys.stdin.readline().rstrip())
+
+    # 입력 시, 단어의 길이를 입력받음
+    if len(word_list[i]) > longest:
+        longest = len(word_list[i])
+
+# 가장 긴 단어의 길이를 기준으로 나머지 짧은 단어들 빈칸 생성
+for i in range(5):
+    if len(word_list[i]) < longest:
+        for j in range(longest - len(word_list[i])):
+            word_list[i] = word_list[i] + "@"
+
+for i in range(longest):
+    for j in range(5):
+        if word_list[j][i] != "@":
+            read.append(word_list[j][i])
+        else:
+            pass
+
+for item in read:
+    print(item, end = "")
