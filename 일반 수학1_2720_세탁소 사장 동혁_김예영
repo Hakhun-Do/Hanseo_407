@@ -1,0 +1,38 @@
+import java.util.*;
+import java.io.*;
+
+public class week11_2720_LaundryCEO {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int T = Integer.parseInt(br.readLine());
+
+        for (int i = 0; i < T; i++) {
+            int x = Integer.parseInt(br.readLine());
+
+            for (int j = 0; j < 4; j++) {
+                switch (j) {
+                    case 0: // 쿼터(Quarter, $0.25)의 개수
+                        bw.write((x / 25) + " ");
+                        x %= 25;
+                        break;
+                    case 1: // 다임(Dime, $0.10)의 개수
+                        bw.write((x / 10) + " ");
+                        x %= 10;
+                        break;
+                    case 2: // 니켈(Nickel, $0.05)의 개수
+                        bw.write((x / 5) + " ");
+                        x %= 5;
+                        break;
+                    case 3: // 페니(Penny, $0.01)의 개수
+                        bw.write((x) + "\n");
+                        break;
+                }
+            }
+        }
+
+        bw.flush();
+    }
+}
