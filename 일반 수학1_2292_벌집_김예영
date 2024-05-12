@@ -1,0 +1,23 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
+        int count = 1; // 벌집의 겹 수, 1 부터 N 까지의 이동한 칸의 수는 N이 있는 겹의 수이다.
+        int range = 2;
+        // N이 1인 경우를 제외하고 2부터 count(벌집의 겹 수)가 2 이상이기 때문에 range를 2로 초기화
+
+        while(range <= N) {
+            range = range + (6*count);
+            count++;
+        }
+
+        bw.write(count+"");
+        bw.flush();
+    }
+}
