@@ -1,0 +1,57 @@
+//일반 수학1_1193_분수찾기_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	int X;
+	cin >> X;
+	/* 짝수는 분자가 1로, 분모는 해당 번호의 숫자로 위에서 시작한다.
+	* 홀수는 분자가 해당 번호의 숫자, 분모는 1로 아래에서 시작한다.
+	*/
+	int count1 = 0;// 해당 대각선 전까지의 분수 개수
+	int count2 = 1;//해당 대각선 가장 큰 수
+	while (true) {
+		count1 = count1 + count2;
+		if (X <= count1) {
+			break;
+		}
+		count2++;
+	}
+	count1 = count1 - count2;
+	int up, down;
+	//짝수일 경우
+	if (count2 % 2 == 0) {
+		up = 1;
+		down = count2;
+		for (int i = 0; i < count2; i++) {
+			count1++;
+			if (count1 == X) {
+				up = up + i;
+				down = down - i;
+				i = count2; //break;의미
+			}
+		}
+		cout << up << "/" << down;
+	}
+	//홀수일 경우
+	else {
+		up = count2;
+		down = 1;
+		for (int i = 0; i < count2; i++) {
+			count1++;
+			if (count1 == X) {
+				up = up - i;
+				down = down + i;
+				i = count2; //break;의미
+			}
+		}
+		cout << up << "/" << down;
+	}
+	return 0;
+}
