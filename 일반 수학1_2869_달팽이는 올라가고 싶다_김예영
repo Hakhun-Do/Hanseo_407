@@ -1,0 +1,29 @@
+import java.util.*;
+import java.io.*;
+
+public class week11_2869_SnailUp {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        int V = Integer.parseInt(st.nextToken());
+        int now = 0;
+        int day = 1;
+
+        while (true) {
+            now += A;
+            if (now >= V)
+                break;
+            now -= B;
+            day++;
+        }
+
+        bw.write(day + "");
+        bw.flush();
+    }
+}
