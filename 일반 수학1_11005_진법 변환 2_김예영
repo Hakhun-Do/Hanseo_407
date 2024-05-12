@@ -1,0 +1,31 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder(); 
+        // StringBuilder의 reverse 메소드를 사용하기 위해서
+        // 따라서 char형으로 sb에 담고 toString으로 다시 String으로 변환 후 출력
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int N = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
+        // System.out.println(Integer.toString(N, B).toUpperCase());
+        // Integer.toString(변환시킬 수(int), 변환할 진법(int))
+
+        while (N != 0) {
+            int num = N % B;
+            if (num >= 10) // 10보다 큰 경우에는 A~Z로 출력
+                sb.append((char)(num + 'A' - 10));
+            else // 10보다 작으면 그냥 출력
+                sb.append(num);
+            N /= B;
+        }
+
+        bw.write(sb.reverse().toString()); // 문자열 뒤집기
+        bw.flush();
+    }
+}
