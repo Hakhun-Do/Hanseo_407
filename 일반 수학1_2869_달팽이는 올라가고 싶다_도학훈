@@ -1,0 +1,20 @@
+//일반 수학1_2869_달팽이는 올라가고 싶다_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	int A, B, V;
+	//A:낮에 A미터 올라감, B:밤에 B미터 미끄러짐, V:도달해야할 나무 높이
+	cin >> A >> B >> V;
+	int count = 1;
+	count += (V - A) / (A - B);
+	if ((V - A) % (A - B) != 0) count++;
+	cout << count;
+	return 0;
+}
