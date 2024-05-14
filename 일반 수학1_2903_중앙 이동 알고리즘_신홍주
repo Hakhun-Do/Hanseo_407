@@ -1,0 +1,10 @@
+n = int(input())
+
+start = 2
+end = 0
+
+for i in range(n):
+    end = 2 * start - 1
+    start = end
+
+print(end ** 2)
