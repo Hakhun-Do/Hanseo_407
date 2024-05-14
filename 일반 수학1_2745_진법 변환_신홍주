@@ -1,0 +1,22 @@
+n, b = input().split()
+
+b = int(b)
+num = 0
+target = list(n)
+
+alphabet_dict = {}
+
+# A부터 Z까지의 알파벳과 숫자 쌍을 딕셔너리에 추가
+for i in range(26):
+    alphabet_dict[chr(ord('A') + i)] = i + 10
+
+for i in range(len(target)):
+    if ord(target[i]) >= 48 and ord(target[i]) < 58:
+        target[i] = int(target[i])
+
+    if isinstance(target[i], int):
+        num += target[i] * (b ** (len(target) - 1 - i))
+    else:
+        num += alphabet_dict[target[i]] * (b ** (len(target) - 1 - i))
+
+print(num)
