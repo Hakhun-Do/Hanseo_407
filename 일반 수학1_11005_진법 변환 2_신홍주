@@ -1,0 +1,30 @@
+from collections import deque
+
+n, b = input().split()
+
+n = int(n)
+b = int(b)
+
+alphabet_dict = {}
+
+# 10부터 36까지의 숫자와 알파벳 쌍을 딕셔너리에 추가
+for i in range(26):
+    alphabet_dict[i + 10] = chr(ord('A') + i)
+
+num = deque()
+while True:
+    if n < b:
+        num.appendleft(n)
+        break
+    else:
+        num.appendleft(n % b)
+
+        n = n // b
+
+for i in range(len(num)):
+    if num[i] >= 0 and num[i] < 10:
+        num[i] = str(num[i])
+    else:
+        num[i] = alphabet_dict[num[i]]
+
+print("".join(num))
