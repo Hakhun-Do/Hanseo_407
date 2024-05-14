@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+	int a, b = 1, cnt = 1;
+	cin >> a;
+	while (b<a)
+	{
+		cnt++;
+		b += cnt;
+	}
+	if (cnt % 2 == 0)
+		cout << 1 + (a - (b - cnt) - 1) << "/" << cnt - (a - (b - cnt) - 1);
+	else
+		cout << cnt - (a - (b - cnt) - 1) << "/" << 1 + (a - (b - cnt) - 1);
+}
