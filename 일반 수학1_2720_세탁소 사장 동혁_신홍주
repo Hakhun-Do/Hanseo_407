@@ -1,0 +1,15 @@
+t = int(input())
+
+for i in range(t):
+    c = int(input())
+
+    quarter = c // 25
+    c = c % 25
+
+    dime = c // 10
+    c = c % 10
+
+    nickel = c // 5
+    penny = c % 5
+
+    print(quarter, dime, nickel, penny)
