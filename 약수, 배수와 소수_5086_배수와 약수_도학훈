@@ -1,0 +1,30 @@
+//약수, 배수와 소수_5086_배수와 약수_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	/*첫 번째 숫자가 두 번째 숫자의 약수라면 factor
+	  첫 번째 숫자가 두 번째 숫자의 배수라면 multiple
+	  둘 다 아니라면 neither
+	*/
+	int a, b;
+	vector<string> result;
+	while (1) {
+		cin >> a >> b;
+		if (a == 0 && b == 0) break;
+		if (a % b == 0)result.push_back("multiple");
+		else if (b % a == 0) result.push_back("factor");
+		else result.push_back("neither");
+	}
+	a = result.size();
+	for (int i = 0; i < a; i++) {
+		cout << result[i] << "\n";
+	}
+	return 0;
+}
