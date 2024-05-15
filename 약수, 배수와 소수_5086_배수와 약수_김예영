@@ -1,0 +1,33 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        while (true) {
+            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+            int A = Integer.parseInt(st.nextToken());
+            int B = Integer.parseInt(st.nextToken());
+
+            if (A == 0 && B == 0) //입력된 A와 B가 둘다 0이라면 입력의 마지막이다
+                break;
+
+            if (A < B) { // A가 B보다 작은 경우에는 A가 B의 약수일 수도 있다
+                if (B % A == 0)
+                    bw.write("factor\n");
+                else
+                    bw.write("neither\n");
+            } else { // A가 B보다 큰 경우에는 A가 B의 배수일 수도 있다
+                if (A % B == 0)
+                    bw.write("multiple\n");
+                else
+                    bw.write("neither\n");
+            }
+        }
+
+        bw.flush();
+    }
+}
