@@ -1,0 +1,35 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+int main() {
+	int n, m, min = 0, sum = 0;
+	bool isP;
+	vector<int> pnum(1, 2);
+	cin >> m >> n;
+	if (n < 2 != true) {
+		for (int i = 3; i <= n; i++) {//소수값 찾기
+			isP = true;
+			for (int j = 0; j < pnum.size(); j++) {
+				if (i % pnum[j] == 0) {
+					isP = false;
+					break;
+				}
+			}
+			if (isP == true)
+				pnum.push_back(i);
+		}
+		for (int i = 0; i < pnum.size(); i++) {//소수 데이터에서 비교
+			if (pnum[i] >= m && min == 0) {
+				sum += pnum[i];
+				min = pnum[i];
+			}
+			else if (pnum[i] >= m)
+				sum += pnum[i];
+		}
+	}
+	if (min == 0)
+		cout << -1;
+	else
+		cout << sum << endl << min;
+}
