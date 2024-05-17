@@ -1,0 +1,31 @@
+//약수, 배수와 소수_11653_소인수분해_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, result1;
+	cin >> N;
+	result1 = N;
+	vector<int> result2;
+	for (int i = 2; i <= (N / 2); i++) {
+		if (N % i == 0) {
+			result2.push_back(i);
+			N = N / i;
+			i = 1;
+		}
+	}
+	result2.push_back(N);
+	if (N == 1)cout << "";
+	else {
+		for (int i = 0; i < result2.size(); i++) {
+			cout << result2[i] << "\n";
+		}
+	}
+	return 0;
+}
