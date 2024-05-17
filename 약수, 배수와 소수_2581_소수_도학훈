@@ -1,0 +1,28 @@
+//약수, 배수와 소수_2581_소수_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N, M;
+	int sum = 0, mini = 0, count = 0;
+	cin >> N >> M;
+	for (int i = M; i >= N; i--) {
+		for (int j = 2; j <= (i / 2); j++) {
+			if (i % j != 0) count++;
+		}
+		if (count == (i / 2) - 1) {
+			mini = i;
+			sum += i;
+		}
+		count = 0;
+	}
+	if (sum == 0)cout << -1;
+	else cout << sum << "\n" << mini;
+	return 0;
+}
