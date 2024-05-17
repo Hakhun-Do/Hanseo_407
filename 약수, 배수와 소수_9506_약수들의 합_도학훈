@@ -1,0 +1,40 @@
+//약수, 배수와 소수_9506_약수들의 합_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int n, sum = 0;
+	vector<int> result1; //해당수의 약수 저장
+	int j = 0;
+	while (true) {
+		cin >> n;
+		if (n == -1)break;
+		for (int i = 1; i <= (n / 2); i++) {
+			if (n % i == 0) {
+				result1.push_back(i);
+				sum += i;
+			}
+		}
+		cout<<n;
+		if (sum == n) {
+			for (int i = 0; i < result1.size(); i++) {
+				if (i == 0)cout << " = ";
+				else cout << " + ";
+
+				cout << result1[i];
+			}
+		}
+		else cout << " is NOT perfect.";
+		cout << "\n";
+		result1.clear();
+		sum = 0;
+	}
+
+	return 0;
+}
