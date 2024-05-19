@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+            BufferedWriter bw1 = new BufferedWriter(new OutputStreamWriter(System.out));
+            // 버퍼1 : 완전 수 일때 출력 할 버퍼
+            BufferedWriter bw2 = new BufferedWriter(new OutputStreamWriter(System.out));
+            // 버퍼2 : 완전 수가 아닐때 출력 할 버퍼
+            int X = Integer.parseInt(br.readLine());
+            int sum = 0;
+
+            if (X == -1)
+                break;
+
+            for (int i = 1; i < X; i++) {
+                if (X % i == 0) {
+                    sum += i;
+                    if (i == 1)
+                        bw1.write(X + " = " + i);
+                    else
+                        bw1.write(" + " + i);
+                }
+            }
+
+            if (sum == X) {
+                bw1.write("\n");
+                bw1.flush();
+            }
+            else {
+                bw2.write(X + " is NOT perfect.\n");
+                bw2.flush();
+            }
+        }
+    }
+}
