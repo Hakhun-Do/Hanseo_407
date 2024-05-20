@@ -1,0 +1,32 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int M = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        int sum = 0; // 총합
+        int min = M; // 소수 중에 최솟값, 초기화는 가장 큰 수로 했으나 어떤 수도 상관 없음
+
+        for (int i = N; i >= M; i--) {
+            int j;
+            for (j = 2; j < i; j++)
+                if (i % j == 0) // 약수가 있는 경우
+                    break;
+            if (j == i) { // 약수가 없는 경우
+                min = i;
+                sum += i;
+            }
+        }
+        if (sum == 0) // M이상 N이하의 자연수 중 소수가 없는 경우 -1 출력
+            bw.write(-1 + "");
+        else
+            bw.write(sum + "\n" + min);
+
+        bw.flush();
+    }
+}
