@@ -1,0 +1,22 @@
+//기하: 직사각형과 삼각형_1085_직사각형애서 탈출_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	int x, y, w, h;
+	cin >> x >> y >> w >> h;
+	int result1, result2;
+	if (w - x > h - y) result1 = h - y;
+	else result1 = w - x;
+	if (x > y) result2 = y;
+	else result2 = x;
+	if (result1 > result2)cout << result2;
+	else cout << result1;
+	return 0;
+}
