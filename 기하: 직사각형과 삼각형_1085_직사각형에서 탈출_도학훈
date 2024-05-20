@@ -1,4 +1,4 @@
-//기하: 직사각형과 삼각형_1085_직사각형애서 탈출_도학훈
+//기하: 직사각형과 삼각형_1085_직사각형에서 탈출_도학훈
 #include<iostream>
 #include<vector>
 #include<cmath>
