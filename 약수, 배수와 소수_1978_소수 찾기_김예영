@@ -11,17 +11,17 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine(), " ");
         int sum = 0;
 
-        for(int i=0; i<N;i++) {
+        for (int i = 0; i < N; i++) {
             int x = Integer.parseInt(st.nextToken());
             int j;
-            for(j=2; j<x;j++)
-                if(x%j == 0) // 약수가 있는 경우
+            for (j = 2; j < x; j++)
+                if (x % j == 0) // 약수가 있는 경우
                     break;
-            if(j==x) // 약수가 없는 경우
+            if (j == x) // 약수가 없는 경우
                 sum++;
         }
 
-        bw.write(sum+"");
+        bw.write(sum + "");
         bw.flush();
     }
 }
