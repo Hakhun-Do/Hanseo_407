@@ -1,0 +1,16 @@
+//기하: 직사각형과 삼각형_27323_직사각형_도학훈
+#include<iostream>
+#include<vector>
+#include<cmath>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	int A, B;
+	cin >> A >> B;
+	cout << A * B;
+	return 0;
+}
