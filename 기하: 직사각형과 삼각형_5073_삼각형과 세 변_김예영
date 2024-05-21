@@ -10,19 +10,16 @@ public class Main {
         while (true) {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             int[] x = new int[3]; // 세 변의 길이를 저장할 1차원 배열
-            int max = 0; // 길이가 가장 큰 변이 저장된 배열의 인덱스를 저장할 변수
 
             for (int i = 0; i < 3; i++) {
                 x[i] = Integer.parseInt(st.nextToken());
-                if (x[i] > x[max]) { // 길이가 가장 큰 변 찾기
-                    max = i; // 길이가 가장 큰 변이 저장된 배열의 인덱스를 max에 저장
-                }
             }
+            Arrays.sort(x); // 오름차순 정렬, 따라서 마지막 요소인 x[2]가 가장 긴 변
 
             if (x[0] == 0 && x[1] == 0 && x[2] == 0)
                 break; // 세 변의 길이 모두 0이 들어왔을 때 무한 반복 종료
 
-            if (x[max] >= x[0] + x[1] + x[2] - x[max])
+            if (x[2] >= x[0] + x[1])
                 bw.write("Invalid\n"); // 삼각형이 성립하지 않을 때
             else if (x[0] == x[1] && x[0] == x[2])
                 bw.write("Equilateral\n"); // 세 변의 길이가 모두 같을 때
