@@ -1,0 +1,14 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        
+        // 문제의 조건 중dp 입력되는 값이 10의 9승이라는 조건이 있기 때문에 (long) 추가
+        bw.write((long)Integer.parseInt(br.readLine()) * 4 + "");
+        bw.flush();
+    }
+}
