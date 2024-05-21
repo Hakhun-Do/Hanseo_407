@@ -1,0 +1,25 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int w = Integer.parseInt(st.nextToken());
+        int h = Integer.parseInt(st.nextToken());
+        int xd; // x축을 기준으로 하며, 왼쪽 또는 오른쪽과 가장 가까운 거리
+        int yd; // y축을 기준으로 하며, 위쪽 또는 아래쪽과 가장 가까운 거리
+
+        xd = Math.min(x, w - x);
+        yd = Math.min(y, h - y);
+
+        bw.write(Math.min(xd, yd) + "");
+        // x축을 기준으로 가까운 거리와 y축을 기준으로 가까운 거리 중 가장 가까운 거리를 버퍼에 입력
+        bw.flush();
+    }
+}
