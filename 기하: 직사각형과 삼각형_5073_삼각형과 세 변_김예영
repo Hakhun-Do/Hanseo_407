@@ -11,9 +11,9 @@ public class Main {
             StringTokenizer st = new StringTokenizer(br.readLine(), " ");
             int[] x = new int[3]; // 세 변의 길이를 저장할 1차원 배열
 
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++)
                 x[i] = Integer.parseInt(st.nextToken());
-            }
+            
             Arrays.sort(x); // 오름차순 정렬, 따라서 마지막 요소인 x[2]가 가장 긴 변
 
             if (x[0] == 0 && x[1] == 0 && x[2] == 0)
