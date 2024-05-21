@@ -1,0 +1,27 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int A = Integer.parseInt(br.readLine());
+        int B = Integer.parseInt(br.readLine());
+        int C = Integer.parseInt(br.readLine());
+        int sum = A + B + C;
+
+        if (sum == 180) { // 삼각형이 성립할 때
+            if (A == B && A == C) // 세 변의 길이가 모두 같을 때
+                bw.write("Equilateral");
+            else if (A == B || B == C || A == C) // 두 변의 길이가 같을 때
+                bw.write("Isosceles");
+            else // 세 변의 길이가 모두 다를 때
+                bw.write("Scalene");
+        } else // 세 변의 길이 합이 180이 아닐 때
+            bw.write("Error");
+
+        bw.flush();
+    }
+}
