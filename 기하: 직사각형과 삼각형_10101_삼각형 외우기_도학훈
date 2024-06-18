@@ -1,0 +1,31 @@
+//기하: 직사각형과 삼각형_10101_삼각형 외우기_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	vector<int> semo;
+	int n;
+	for (int i = 0; i < 3; i++) {
+		cin >> n;
+		semo.push_back(n);
+	}
+	sort(semo.begin(), semo.end());
+	if ((semo[0] + semo[1] + semo[2]) != 180) cout << "Error";
+	else {
+		n = 0;
+		if (semo[0] == semo[1]) n++;
+		else if (semo[1] == semo[2])n++;
+		if (semo[0] == semo[2]) n++;
+		if (n == 2) cout << "Equilateral";
+		else if (n == 1) cout << "Isosceles";
+		else cout << "Scalene";
+	}
+	
+	return 0;
+}
