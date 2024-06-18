@@ -1,0 +1,18 @@
+//기하: 직사각형과 삼각형_15894_수학은 체육과목 입니다_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	long n;
+	cin >> n;
+	n = n * 4;
+	cout << n;
+
+	return 0;
+}
