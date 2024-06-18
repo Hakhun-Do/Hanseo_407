@@ -1,0 +1,26 @@
+//기하: 직사각형과 삼각형_14215_세 막대_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	vector<int> makdae;
+	int temp1, temp2, temp3;
+	cin >> temp1 >> temp2 >> temp3;
+	makdae.push_back(temp1);
+	makdae.push_back(temp2);
+	makdae.push_back(temp3);
+	sort(makdae.begin(), makdae.end());
+	if (makdae[0] + makdae[1] <= makdae[2]) {
+		makdae[2] = makdae[0] + makdae[1] - 1;
+	}
+	temp1 = makdae[0] + makdae[1] + makdae[2];
+	cout << temp1;
+
+	return 0;
+}
