@@ -1,0 +1,29 @@
+//조건문_2480_주사위 세개_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	vector<int> a;
+	int temp;
+	for (int i = 0; i < 3; i++) {
+		cin >> temp;
+		a.push_back(temp);
+	}
+	sort(a.begin(), a.end());
+	temp = 0;
+	if (a[0] == a[1] || a[1] == a[2]) {
+		if (a[0] == a[2]) {
+			temp = 10000 + a[0] * 1000;
+		}
+		else temp = 1000 + a[1] * 100;
+	}
+	else temp = a[2] * 100;
+	cout << temp;
+	return 0;
+}
