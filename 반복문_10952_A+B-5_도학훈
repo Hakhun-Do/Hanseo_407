@@ -1,0 +1,20 @@
+//반복문_10952_A+B-5_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int temp1, temp2, sum;
+	while (true) {
+		cin >> temp1 >> temp2;
+		if (temp1 == 0 && temp2 == 0) break;
+		cout << temp1 + temp2<<"\n";
+	}
+	
+	return 0;
+}
