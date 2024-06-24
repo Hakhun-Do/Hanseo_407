@@ -1,0 +1,25 @@
+//반복문_2438_별 찍기-1_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int n, count = 0;
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		while (true) {
+			count++;
+			cout << "*";
+			if (count == i)break;
+		}
+		cout << "\n";
+		count = 0;
+	}
+	
+	return 0;
+}
