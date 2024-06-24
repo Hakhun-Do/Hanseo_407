@@ -1,0 +1,19 @@
+//반복문_2739_구구단_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N;
+	cin >> N;
+	for (int i = 0; i < 9; i++) {
+		cout << N << " * " << i + 1 << " = " << N * (i + 1)<<"\n";
+	}
+
+	return 0;
+}
