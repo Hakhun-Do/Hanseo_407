@@ -1,0 +1,19 @@
+//반복문_8393_합_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int n, sum = 0;
+	cin >> n;
+	for (int i = 1; i <= n; i++) {
+		sum = sum + i;
+	}
+	cout << sum;
+	return 0;
+}
