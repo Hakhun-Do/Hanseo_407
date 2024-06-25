@@ -1,0 +1,15 @@
+#include <iostream>
+#include <set>
+using namespace std;
+int main()
+{
+	int n, x, y;
+	set<int> xl, yl;
+	cin >> n;
+	for(int i=0;i<n;i++){
+		cin >> x >> y;
+		xl.insert(x);
+		yl.insert(y);
+	}
+    cout << (*--xl.end()-*xl.begin()) * (*--yl.end()-*yl.begin());
+}
