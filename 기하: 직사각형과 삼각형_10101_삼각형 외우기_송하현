@@ -1,0 +1,22 @@
+#include <iostream>
+#include <set>
+using namespace std;
+int main()
+{
+	int n,hap=0;
+	set<int> al;
+	for(int i=0;i<3;i++){
+		cin >> n;
+		hap+=n;
+		al.insert(n);
+	}
+	if(hap!=180)
+		cout << "Error";
+	else{
+	    switch(al.size()){
+	        case 3: cout << "Scalene"; break;
+	        case 2: cout << "Isosceles"; break; 
+	        default: cout << "Equilateral"; break;
+	    }
+	}
+}
