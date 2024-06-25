@@ -1,0 +1,17 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int main()
+{
+	int nl[3], sum = 0;
+	for (int i = 0; i < 3; i++){
+			cin >> nl[i];
+			sum += nl[i];
+	}
+	sort(nl, nl + 3);
+	while (nl[2] >= nl[0] + nl[1]){
+		nl[2]--;
+		sum--;
+	}
+	cout << sum;
+}
