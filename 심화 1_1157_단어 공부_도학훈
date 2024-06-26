@@ -1,0 +1,39 @@
+//심화 1_1157_단어 공부_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	string word;
+	cin >> word;
+	map<char, int> map;
+	int temp = 0, count = 0;
+	char bin;
+	
+	for (int i = 0; i < word.size(); i++) {
+		if (int(word[i]) > 96) {
+			word[i] = char((int(word[i]) - 32));
+		}
+		map[word[i]]++;
+	}
+	for (const auto& pair : map) {
+		if (temp <= pair.second) {
+			temp = pair.second;
+			bin = pair.first;
+		}
+	}
+	for (const auto& pair : map) {
+		if (pair.second == temp) {
+			count++;
+		}
+	}
+	if (count > 1)cout << "?";
+	else cout << bin;
+	return 0;
+}
