@@ -1,0 +1,28 @@
+//정렬_11650_좌표 정렬하기_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	// 좌표의 개수
+	int num;
+	cin >> num;
+	// pair로 묶은 이유: 한번에 (x,y) 좌표 정렬하기 위함.
+	vector<pair<int, int>> zum; 
+	int temp1, temp2;
+	for (int i = 0; i < num; i++) {
+		cin >> temp1 >> temp2;
+		zum.push_back(make_pair(temp1, temp2));
+	}
+	sort(zum.begin(), zum.end());
+	for (int i = 0; i < num; i++) {
+		cout << zum[i].first <<" "<< zum[i].second<<"\n";
+	}
+	
+	return 0;
+}
