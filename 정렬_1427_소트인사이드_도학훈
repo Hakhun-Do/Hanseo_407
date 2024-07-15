@@ -1,0 +1,32 @@
+//정렬_1427_소트인사이드_도학훈
+#include<iostream>
+#include<vector>
+#include<string>
+#include<algorithm>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	//입력된 수를 내림차순으로 정렬한 수를 출력한다.
+	// ex)  61423 -> 64321
+
+	string full; //입력받을 수
+	cin >> full;
+	int count = full.size(); //count = 자리 수
+	long temp1, temp2 = 1;
+	for (int i = 0; i < count; i++) {temp2 = temp2 * 10;} //temp2를 각 숫자 쪼개기 위해 가장 큰 단위로 만듦.(기존단위보다 10배 큼)
+	vector<int> output(count); //출력하는 값
+	temp1 = stoi(full); //string to int
+	
+	for (int i = 0; i < count; i++) { //각 자리 vector값에다 저장하기 위한 코드
+		temp2 = temp2 / 10; //(기존단위보다 10배커서 10으로 나누고 시작함)
+		output[i] = temp1 / temp2;
+		temp1 = temp1 % temp2;
+	}
+	sort(output.rbegin(), output.rend()); //내림채순 정렬 코드
+	for (int i = 0; i < count;i++) {cout << output[i];}
+
+	return 0;
+}
