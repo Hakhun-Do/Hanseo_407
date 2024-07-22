@@ -1,0 +1,30 @@
+//정렬_11651_좌표 정렬하기 2_도학훈
+#include<iostream>
+#include<vector>
+#include<map>
+#include<algorithm>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	// 좌표의 개수
+	int num;
+	cin >> num;
+	// pair로 묶은 이유: 한번에 (x,y) 좌표 정렬하기 위함.
+	vector<pair<int, int>> zum; 
+	int temp1, temp2;
+	for (int i = 0; i < num; i++) {
+		cin >> temp1 >> temp2;
+		zum.push_back(make_pair(temp2, temp1));
+		// (y,x) 좌표로 정렬하여 기준인 y부터 비교함
+	}
+	sort(zum.begin(), zum.end());
+	for (int i = 0; i < num; i++) {
+		cout << zum[i].second <<" "<< zum[i].first<<"\n";
+		// 기준이 반대이기 때문에 출력시 다시 바꿔줌
+	}
+	
+	return 0;
+}
