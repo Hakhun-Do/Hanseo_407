@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class week15_11651_CoordinatesSort2 {
+public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
