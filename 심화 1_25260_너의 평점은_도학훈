@@ -1,0 +1,35 @@
+//심화 1_25260_너의 평점은_도학훈
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+	
+	string name, grade1;
+	double hak1, hak2 = 0, grade2, result = 0;
+	
+	for (int i = 0; i < 20; i++) {
+		cin >> name >> hak1 >> grade1;
+		if (grade1 == "A+") grade2 = 4.5;
+		else if (grade1 == "A0") grade2 = 4.0;
+		else if (grade1 == "B+") grade2 = 3.5;
+		else if (grade1 == "B0") grade2 = 3.0;
+		else if (grade1 == "C+") grade2 = 2.5;
+		else if (grade1 == "C0") grade2 = 2.0;
+		else if (grade1 == "D+") grade2 = 1.5;
+		else if (grade1 == "D0") grade2 = 1.0;
+		else  grade2 = 0.0;
+		
+		if (grade1 == "P") hak1 = 0;
+		hak2 = hak2 + hak1;
+		result = result + (hak1 * grade2);
+	}
+	
+	cout << result / hak2;
+	
+	return 0;
+}
+
